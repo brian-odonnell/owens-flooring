@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     preset: 'static'
   },
   app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
       title: 'Owens Flooring Company | Willoughby, OH',
       meta: [
