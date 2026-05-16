@@ -152,7 +152,7 @@ async function handleSubmit() {
 <style scoped>
 .contact {
   padding: 100px 32px;
-  background: var(--warm-white);
+  background: var(--ice);
   color: var(--coal);
 }
 
@@ -193,14 +193,14 @@ async function handleSubmit() {
 }
 
 a.contact-detail-item:hover .detail-value {
-  color: var(--amber);
+  color: var(--cerulean);
 }
 
 .detail-icon {
   flex-shrink: 0;
   width: 42px;
   height: 42px;
-  background: var(--amber);
+  background: var(--cerulean);
   color: #fff;
   display: flex;
   align-items: center;
@@ -294,7 +294,7 @@ a.contact-detail-item:hover .detail-value {
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-  border-color: var(--amber);
+  border-color: var(--cerulean);
   background: rgba(255,255,255,0.09);
 }
 

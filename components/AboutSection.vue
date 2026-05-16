@@ -16,12 +16,12 @@
       <!-- Text column -->
       <div class="about-text">
         <p class="section-label">About Us</p>
-        <h2 class="section-title about-title">Nearly Six Decades<br>of Flooring Excellence.</h2>
+        <h2 class="section-title about-title">Family Owned.<br>Union Installed.<br>Since 1967.</h2>
         <p class="about-body">
-          Owens Flooring Company has been serving Northeast Ohio since 1967. What began as a small flooring contractor in Eastlake has grown into one of the region's most trusted names in resilient flooring and tile — but our hands-on approach and commitment to quality hasn't changed.
+          Owens Flooring Company has been a trusted name in Northeast Ohio for over five decades. We're family owned and operated — and that hasn't changed since the day we opened our doors in Eastlake.
         </p>
         <p class="about-body">
-          We work directly with homeowners, property managers, and general contractors to deliver flooring solutions on time and within scope. Every project is handled by our own experienced crew from start to finish — no surprises, no shortcuts.
+          We staff our crews directly through the union, so every installer on your job is a trained, dues-paying professional. We also work around your business hours — nights, weekends, whatever it takes — so your operations never skip a beat.
         </p>
 
         <div class="about-values">
@@ -43,10 +43,6 @@
       <p class="section-label team-label">The Team</p>
       <div class="team-grid">
         <div v-for="member in team" :key="member.name" class="team-card">
-          <div class="team-photo">
-            <img v-if="member.img" :src="member.img" :alt="member.name" />
-            <div v-else class="team-photo-placeholder"></div>
-          </div>
           <h3 class="team-name">{{ member.name }}</h3>
           <p class="team-role">{{ member.role }}</p>
         </div>
@@ -57,15 +53,15 @@
 
 <script setup>
 const values = [
-  { title: 'Direct Install, No Subs', desc: 'Our employees install every floor. Quality control stays in-house.' },
-  { title: 'Weekend & After-Hours Crews', desc: 'We work around your business hours to minimize downtime.' },
-  { title: 'Written Scope & Fixed Pricing', desc: 'You\'ll always know exactly what you\'re getting and what it costs.' },
+  { title: 'Union Labor', desc: 'Every installer is sourced directly through the union — skilled, accountable, and professional.' },
+  { title: 'Around-the-Clock Scheduling', desc: 'We work nights and weekends to keep your business running without interruption.' },
+  { title: 'Family Owned Since 1967', desc: 'Three generations of the same family, still doing business the same way — with integrity.' },
 ]
 
 const team = [
-  { name: 'Matthew O\'Donnell', role: 'Owner & CEO', img: '' },
-  { name: 'Andrew O\'Donnell', role: 'Project Manager', img: '' },
-  { name: 'Kelly O\'Donnell', role: 'Project Manager', img: '' },
+  { name: 'Matthew O\'Donnell', role: 'Owner & CEO' },
+  { name: 'Andrew O\'Donnell', role: 'Project Manager' },
+  { name: 'Kelly O\'Donnell', role: 'Project Manager' },
 ]
 </script>
 
@@ -117,7 +113,7 @@ const team = [
   right: 24px;
   width: 100px;
   height: 100px;
-  background: var(--amber);
+  background: var(--cerulean);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -174,8 +170,8 @@ const team = [
   flex-shrink: 0;
   width: 10px;
   height: 10px;
-  background: var(--amber);
-  margin-top: 6px;
+  background: var(--cerulean);
+  margin-top: 9px;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
@@ -212,49 +208,26 @@ const team = [
 }
 
 .team-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.team-photo {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  margin-bottom: 20px;
-  background: var(--bark);
-}
-
-.team-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-
-.team-photo-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(160deg, #3d3530 0%, #2e2720 100%);
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .team-name {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   color: #fff;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .team-role {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.90rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--cerulean);
 }
 
 @media (max-width: 960px) {
@@ -266,7 +239,6 @@ const team = [
 @media (max-width: 720px) {
   .team-grid {
     grid-template-columns: 1fr;
-    max-width: 320px;
   }
 }
 

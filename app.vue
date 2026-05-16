@@ -18,7 +18,7 @@
   top: -100%;
   left: 0;
   padding: 12px 24px;
-  background: var(--amber);
+  background: var(--cerulean);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 700;

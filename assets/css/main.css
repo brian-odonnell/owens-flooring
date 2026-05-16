@@ -1,11 +1,11 @@
 :root {
   --coal: #1a1714;
   --bark: #2e2720;
-  --amber: #0096c7;
-  --gold: #48cae4;
-  --cream: #e8f4f8;
-  --warm-white: #f4f9fc;
-  --slate: #5a7a8a;
+  --cerulean: #0096c7;
+  --sky: #48cae4;
+  --mist: #e8f4f8;
+  --ice: #f4f9fc;
+  --slate: #3d5a6a;
   --light-slate: #8aafc0;
 
   --font-display: 'Barlow Condensed', sans-serif;
@@ -27,7 +27,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--warm-white);
+  background: var(--ice);
   color: var(--coal);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -50,7 +50,7 @@ section {
 
 /* Focus styles */
 *:focus-visible {
-  outline: 2px solid var(--amber);
+  outline: 2px solid var(--cerulean);
   outline-offset: 3px;
 }
 
@@ -62,17 +62,17 @@ section {
 
 .btn-outline:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px var(--amber);
+  box-shadow: 0 0 0 3px var(--cerulean);
 }
 
 /* Utility */
 .section-label {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.90rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--cerulean);
 }
 
 .section-title {
@@ -90,7 +90,7 @@ section {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 14px 36px;
-  background: var(--amber);
+  background: var(--cerulean);
   color: #fff;
   border: none;
   cursor: pointer;
@@ -99,7 +99,7 @@ section {
 }
 
 .btn-primary:hover {
-  background: var(--gold);
+  background: var(--sky);
   color: var(--coal);
   transform: translateY(-2px);
 }

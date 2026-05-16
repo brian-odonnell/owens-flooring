@@ -72,19 +72,18 @@ const navLinks = [
 ]
 
 const services = [
-  'Hardwood & Engineered Wood',
-  'Luxury Vinyl Plank (LVP)',
-  'Ceramic & Porcelain Tile',
-  'Epoxy & Resin Coatings',
   'Commercial Carpet',
-  'Surface Preparation',
+  'High Traffic Flooring',
+  'Ceramic Flooring',
+  'Wood Flooring',
+  'Specialty Flooring',
 ]
 </script>
 
 <style scoped>
 .footer {
   background: var(--coal);
-  color: rgba(255,255,255,0.55);
+  color: #fff;
   padding: 72px 32px 32px;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
@@ -113,7 +112,7 @@ const services = [
 .logo-mark {
   width: 36px;
   height: 36px;
-  background: var(--amber);
+  background: var(--cerulean);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 800;
@@ -159,7 +158,7 @@ const services = [
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--sky);
   letter-spacing: 0.05em;
   transition: color 0.2s;
 }
@@ -175,7 +174,7 @@ const services = [
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: #fff;
   margin-bottom: 20px;
 }
 
@@ -192,12 +191,15 @@ const services = [
 }
 
 .footer-links a {
-  color: rgba(255,255,255,0.55);
+  color: #fff;
   transition: color 0.2s;
+  text-decoration: underline;
 }
 
 .footer-links a:hover {
-  color: var(--gold);
+  color: var(--sky);
+  text-decoration: none;
+  transition: .2s ease all;
 }
 
 /* Bottom bar */
@@ -215,7 +217,7 @@ const services = [
   font-family: var(--font-display);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.25);
+  color: #fff;
 }
 
 @media (max-width: 1024px) {

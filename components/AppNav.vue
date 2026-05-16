@@ -98,7 +98,7 @@ onMounted(() => {
 .logo-mark {
   width: 40px;
   height: 40px;
-  background: var(--amber);
+  background: var(--cerulean);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 800;
@@ -142,7 +142,7 @@ onMounted(() => {
 .nav-link {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.90rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.75);
@@ -157,7 +157,7 @@ onMounted(() => {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--amber);
+  background: var(--cerulean);
   transition: width 0.2s;
 }
 
@@ -185,7 +185,7 @@ onMounted(() => {
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
-  color: var(--gold);
+  color: var(--sky);
   transition: color 0.2s;
 }
 
@@ -255,7 +255,7 @@ onMounted(() => {
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--sky);
   padding: 10px 0;
 }
 

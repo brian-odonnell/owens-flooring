@@ -136,7 +136,7 @@
 
 .hero-headline em {
   font-style: italic;
-  color: var(--gold);
+  color: var(--sky);
 }
 
 .hero-sub {
@@ -173,16 +173,16 @@
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 800;
-  color: var(--gold);
+  color: var(--sky);
   line-height: 1;
 }
 
 .stat-label {
   font-family: var(--font-display);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-size: 0.90rem;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: #fff;
 }
 
 .stat-divider {
@@ -198,7 +198,7 @@
   left: 0;
   right: 0;
   height: 80px;
-  background: var(--warm-white);
+  background: var(--ice);
   clip-path: polygon(0 100%, 100% 0, 100% 100%);
   z-index: 2;
 }
