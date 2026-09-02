@@ -7,8 +7,10 @@
       <ServicesSection />
 <AboutSection />
       <ContactSection />
+      <InstallersSection />
     </main>
     <AppFooter />
+    <InstallerModal />
   </div>
 </template>
 

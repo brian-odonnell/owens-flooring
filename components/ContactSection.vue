@@ -123,6 +123,10 @@
 							placeholder="Describe your space, timeline, and any other details…" required></textarea>
 					</div>
 
+					<p v-if="submitError" class="form-error">
+						Something went wrong sending your message. Please try again or call us directly.
+					</p>
+
 					<button type="submit" class="btn-primary form-submit" :disabled="submitted">
 						<span v-if="!submitted">Send My Request</span>
 						<span v-else>✓ Message Sent!</span>
@@ -145,21 +149,22 @@ const form = reactive({
 })
 
 const submitted = ref(false)
+const submitError = ref(false)
 
-// Wire up to Formspree or your preferred form backend.
-// Update the form action attribute with your Formspree endpoint.
-async function handleSubmit() {
-	// For real Formspree usage, remove @submit.prevent and let the form POST naturally,
-	// OR use fetch() for AJAX submission. Example:
-	//
-	// const res = await fetch('https://formspree.io/f/YOUR_ID', {
-	//   method: 'POST',
-	//   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-	//   body: JSON.stringify(form)
-	// })
-	// if (res.ok) submitted.value = true
-
-	submitted.value = true
+// Update the form's `action` attribute above with your real Formspree endpoint.
+async function handleSubmit(event) {
+	submitError.value = false
+	try {
+		const res = await fetch(event.target.action, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+			body: JSON.stringify(form)
+		})
+		submitted.value = res.ok
+		submitError.value = !res.ok
+	} catch {
+		submitError.value = true
+	}
 }
 </script>
 
@@ -315,6 +320,11 @@ a.contact-detail-item:hover .detail-value {
 .form-field textarea {
 	resize: vertical;
 	min-height: 100px;
+}
+
+.form-error {
+	color: #ff8a8a;
+	font-size: 0.85rem;
 }
 
 .form-submit {
