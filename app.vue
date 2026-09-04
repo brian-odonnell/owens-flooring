@@ -24,7 +24,7 @@
   color: var(--sky-50);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.05em;
   z-index: 9999;
   transition: top 0.2s;

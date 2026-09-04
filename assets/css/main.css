@@ -69,7 +69,7 @@ section {
 /* Utility */
 .section-label {
   font-family: var(--font-display);
-  font-size: 0.90rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -87,7 +87,7 @@ section {
   display: inline-block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 14px 36px;
@@ -109,7 +109,7 @@ section {
   display: inline-block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 13px 36px;

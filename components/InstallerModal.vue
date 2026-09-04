@@ -22,7 +22,7 @@
 							<div class="form-field">
 								<label for="installer-phone">Phone *</label>
 								<input id="installer-phone" v-model="form.phone" name="phone" type="tel"
-									placeholder="(555) 000-0000" required />
+									placeholder="(440) 000-0000" required />
 							</div>
 						</div>
 
@@ -190,8 +190,8 @@ onUnmounted(() => {
 }
 
 .modal-sub {
-	color: rgba(255, 255, 255, 0.6);
-	font-size: 0.92rem;
+	color: var(--sky-50);
+	font-size: 1rem;
 	margin-bottom: 28px;
 }
 
@@ -215,11 +215,11 @@ onUnmounted(() => {
 
 .form-field label {
 	font-family: var(--font-display);
-	font-size: 0.72rem;
+	font-size: 1rem;
 	font-weight: 700;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.75);
+	color: var(--sky-50);
 }
 
 .form-field input,
@@ -229,7 +229,7 @@ onUnmounted(() => {
 	border: 1px solid rgba(255, 255, 255, 0.35);
 	color: var(--sky-50);
 	font-family: var(--font-body);
-	font-size: 0.9rem;
+	font-size: 1rem;
 	padding: 12px 16px;
 	outline: none;
 	transition: border-color 0.2s, background 0.2s;
@@ -257,7 +257,7 @@ onUnmounted(() => {
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-	border-color: var(--sky);
+	border-color: var(--sky-50);
 	background: rgba(255, 255, 255, 0.09);
 }
 
@@ -268,7 +268,7 @@ onUnmounted(() => {
 
 .form-error {
 	color: #ff8a8a;
-	font-size: 0.85rem;
+	font-size: 1rem;
 }
 
 .form-submit {

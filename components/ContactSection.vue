@@ -94,7 +94,7 @@
 						<div class="form-field">
 							<label for="phone">Phone</label>
 							<input id="phone" v-model="form.phone" name="phone" type="tel"
-								placeholder="(555) 000-0000" />
+								placeholder="(440) 000-0000" />
 						</div>
 					</div>
 
@@ -197,7 +197,7 @@ async function handleSubmit(event) {
 
 .contact-sub {
 	color: var(--slate-950);
-	font-size: 0.95rem;
+	font-size: 1rem;
 	margin-bottom: 40px;
 }
 
@@ -212,11 +212,12 @@ async function handleSubmit(event) {
 	gap: 16px;
 	align-items: flex-start;
 	color: inherit;
-	transition: color 0.2s;
+	transition: all 0.2s;
 }
 
 a.contact-detail-item:hover .detail-value {
-	color: var(--sky);
+	color: var(--sky-800);
+	text-decoration: underline;
 }
 
 .detail-icon {
@@ -232,7 +233,7 @@ a.contact-detail-item:hover .detail-value {
 
 .detail-label {
 	font-family: var(--font-display);
-	font-size: 0.65rem;
+	font-size: 1rem;
 	font-weight: 700;
 	letter-spacing: 0.15em;
 	text-transform: uppercase;
@@ -253,6 +254,7 @@ a.contact-detail-item:hover .detail-value {
 	background: var(--slate-950);
 	border: 1px solid rgba(255, 255, 255, 0.06);
 	padding: 48px;
+	clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
 }
 
 .contact-form {
@@ -275,11 +277,11 @@ a.contact-detail-item:hover .detail-value {
 
 .form-field label {
 	font-family: var(--font-display);
-	font-size: 0.72rem;
+	font-size: 1rem;
 	font-weight: 700;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.75);
+	color: var(--sky-50);
 }
 
 .form-field input,
@@ -289,7 +291,7 @@ a.contact-detail-item:hover .detail-value {
 	border: 1px solid rgba(255, 255, 255, 0.35);
 	color: var(--sky-50);
 	font-family: var(--font-body);
-	font-size: 0.9rem;
+	font-size: 1rem;
 	padding: 12px 16px;
 	outline: none;
 	transition: border-color 0.2s, background 0.2s;
@@ -317,7 +319,7 @@ a.contact-detail-item:hover .detail-value {
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-	border-color: var(--sky);
+	border-color: var(--sky-50);
 	background: rgba(255, 255, 255, 0.09);
 }
 
@@ -328,7 +330,7 @@ a.contact-detail-item:hover .detail-value {
 
 .form-error {
 	color: #ff8a8a;
-	font-size: 0.85rem;
+	font-size: 1rem;
 }
 
 .form-submit {

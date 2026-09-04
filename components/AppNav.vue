@@ -3,7 +3,7 @@
 		<div class="nav-inner">
 			<!-- Logo -->
 			<a href="#hero" class="nav-logo" @click="menuOpen = false">
-				<img src="/assets/logos/OFC-Logo-White.svg" alt="Owens Flooring Co. Logo">
+				<LogoSvg class="nav-logo-svg" aria-label="Owens Flooring Logo" />
 			</a>
 
 			<!-- Desktop nav links -->
@@ -46,6 +46,8 @@
 </template>
 
 <script setup>
+import LogoSvg from './LogoSvg.vue'
+
 const isScrolled = ref(false)
 const menuOpen = ref(false)
 
@@ -59,6 +61,10 @@ onMounted(() => {
 	window.addEventListener('scroll', () => {
 		isScrolled.value = window.scrollY > 40
 	})
+})
+
+watch(menuOpen, (open) => {
+	document.body.style.overflow = open ? 'hidden' : ''
 })
 </script>
 
@@ -94,9 +100,16 @@ onMounted(() => {
 	gap: 12px;
 	flex-shrink: 0;
 
-	img {
-		height: 40px;
+	&:hover {
+		.nav-logo-svg {
+			--logo-fill: var(--sky);
+		}
 	}
+}
+
+.nav-logo-svg {
+	/* width: 160px; */
+	height: 40px;
 }
 
 .logo-mark {
@@ -130,7 +143,7 @@ onMounted(() => {
 
 .logo-sub {
 	font-family: var(--font-display);
-	font-size: 0.65rem;
+	font-size: 1rem;
 	letter-spacing: 0.15em;
 	color: var(--sky);
 	text-transform: uppercase;
@@ -146,10 +159,10 @@ onMounted(() => {
 .nav-link {
 	font-family: var(--font-display);
 	font-weight: 600;
-	font-size: 0.90rem;
+	font-size: 1rem;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.75);
+	color: var(--sky-50);
 	transition: color 0.2s;
 	position: relative;
 }
@@ -163,10 +176,6 @@ onMounted(() => {
 	height: 2px;
 	background: var(--sky);
 	transition: width 0.2s;
-}
-
-.nav-link:hover {
-	color: var(--sky-50);
 }
 
 .nav-link:hover::after {
@@ -187,7 +196,7 @@ onMounted(() => {
 	gap: 7px;
 	font-family: var(--font-display);
 	font-weight: 600;
-	font-size: 0.9rem;
+	font-size: 1rem;
 	letter-spacing: 0.05em;
 	color: var(--marigold);
 	transition: color 0.2s;
@@ -234,16 +243,24 @@ onMounted(() => {
 	display: none;
 	flex-direction: column;
 	gap: 4px;
-	background: var(--navy);
-	padding: 0 24px;
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 0.35s ease, padding 0.35s;
+	position: fixed;
+	top: var(--nav-height);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: var(--navy-900);
+	padding: 16px 24px 24px;
+	overflow-y: auto;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-8px);
+	transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 .mobile-menu.open {
-	max-height: 400px;
-	padding: 16px 24px 24px;
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
 }
 
 .mobile-link {

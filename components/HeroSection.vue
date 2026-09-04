@@ -133,7 +133,7 @@
 
 .hero-sub {
 	font-size: 1.1rem;
-	color: rgba(255, 255, 255, 0.7);
+	color: var(--sky-50);
 	max-width: 480px;
 	margin-bottom: 36px;
 	animation: fadeUp 0.6s 0.2s ease both;
@@ -171,7 +171,7 @@
 
 .stat-label {
 	font-family: var(--font-display);
-	font-size: 0.90rem;
+	font-size: 1rem;
 	letter-spacing: 0.10em;
 	text-transform: uppercase;
 	color: var(--sky-50);

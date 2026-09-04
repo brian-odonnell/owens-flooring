@@ -40,8 +40,8 @@ const isOpen = useState('installerModalOpen', () => false)
 }
 
 .installers-sub {
-	color: rgba(255, 255, 255, 0.6);
-	font-size: 0.95rem;
+	color: var(--sky-50);
+	font-size: 1rem;
 	max-width: 520px;
 }
 

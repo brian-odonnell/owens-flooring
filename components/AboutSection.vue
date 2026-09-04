@@ -41,7 +41,8 @@
 
 		<!-- Team sub-section -->
 		<div class="team">
-			<p class="section-label team-label">The Team</p>
+			<p class="section-label">The Team</p>
+			<h2 class="section-title team-title">Meet the "Family" in Family-Owned</h2>
 			<div class="team-grid">
 				<div v-for="member in team" :key="member.name" class="team-card">
 					<h3 class="team-name">{{ member.name }}</h3>
@@ -133,7 +134,7 @@ const team = [
 
 .badge-text {
 	font-family: var(--font-display);
-	font-size: 0.9rem;
+	font-size: 1rem;
 	font-weight: 700;
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
@@ -148,8 +149,8 @@ const team = [
 }
 
 .about-body {
-	color: rgba(255, 255, 255, 0.6);
-	font-size: 0.95rem;
+	color: var(--sky-50);
+	font-size: 1rem;
 	margin-bottom: 16px;
 }
 
@@ -171,13 +172,13 @@ const team = [
 	width: 10px;
 	height: 10px;
 	background: var(--sky);
-	margin-top: 9px;
+	margin-top: 13px;
 	clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .value-title {
 	font-family: var(--font-display);
-	font-size: 1rem;
+	font-size: 1.25rem;
 	font-weight: 700;
 	letter-spacing: 0.03em;
 	color: var(--sky-50);
@@ -185,8 +186,8 @@ const team = [
 }
 
 .value-desc {
-	font-size: 0.88rem;
-	color: rgba(255, 255, 255, 0.6);
+	font-size: 1rem;
+	color: var(--sky-50);
 }
 
 /* Team sub-section */
@@ -197,8 +198,10 @@ const team = [
 	border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.team-label {
-	margin-bottom: 40px;
+.team-title {
+	font-size: clamp(1.6rem, 3vw, 2.4rem);
+	color: var(--sky-50);
+	margin: 12px 0 40px;
 }
 
 .team-grid {
@@ -223,7 +226,7 @@ const team = [
 
 .team-role {
 	font-family: var(--font-display);
-	font-size: 0.90rem;
+	font-size: 1rem;
 	font-weight: 600;
 	letter-spacing: 0.15em;
 	text-transform: uppercase;

@@ -5,7 +5,7 @@
 				<!-- Brand -->
 				<div class="footer-brand">
 					<a href="#hero" class="footer-logo">
-						<img src="/assets/logos/OFC-Logo-White.svg" alt="Owens Flooring Co. Logo">
+						<LogoSvg aria-label="Owens Flooring Logo" />
 					</a>
 					<p class="footer-tagline">
 						Professional commercial flooring installation for offices, retail, industrial, and hospitality spaces.
@@ -31,13 +31,14 @@
 
 			<div class="footer-bottom">
 				<p class="footer-copy">&copy; {{ year }} Owens Flooring Company. All rights reserved.</p>
-				<p class="footer-lic">Licensed · Bonded · Insured · Lic #000000</p>
 			</div>
 		</div>
 	</footer>
 </template>
 
 <script setup>
+import LogoSvg from './LogoSvg.vue'
+
 const year = new Date().getFullYear()
 </script>
 
@@ -69,8 +70,13 @@ const year = new Date().getFullYear()
 	gap: 12px;
 	margin-bottom: 20px;
 
-	img {
+	div {
 		width: 200px;
+		height: 42px;
+	}
+
+	&:hover div {
+		--logo-fill: var(--sky);
 	}
 }
 
@@ -106,14 +112,14 @@ const year = new Date().getFullYear()
 
 .logo-sub {
 	font-family: var(--font-display);
-	font-size: 0.6rem;
+	font-size: 1rem;
 	letter-spacing: 0.15em;
 	color: rgba(255, 255, 255, 0.4);
 	text-transform: uppercase;
 }
 
 .footer-tagline {
-	font-size: 0.88rem;
+	font-size: 1rem;
 	line-height: 1.6;
 	max-width: 280px;
 	margin-bottom: 20px;
@@ -135,7 +141,7 @@ const year = new Date().getFullYear()
 /* Nav groups */
 .footer-heading {
 	font-family: var(--font-display);
-	font-size: 0.7rem;
+	font-size: 1rem;
 	font-weight: 700;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
@@ -151,7 +157,7 @@ const year = new Date().getFullYear()
 }
 
 .footer-links li {
-	font-size: 0.88rem;
+	font-size: 1rem;
 	line-height: 1.4;
 }
 
@@ -177,12 +183,11 @@ const year = new Date().getFullYear()
 	gap: 8px;
 }
 
-.footer-copy,
-.footer-lic {
+.footer-copy {
 	font-family: var(--font-display);
-	font-size: 0.72rem;
+	font-size: 1rem;
 	letter-spacing: 0.08em;
-	color: var(--sky-50);
+	color: var(--slate);
 }
 
 @media (max-width: 1024px) {

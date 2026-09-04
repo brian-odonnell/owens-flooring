@@ -148,7 +148,7 @@ const services = [
 
 .service-tags li {
 	font-family: var(--font-display);
-	font-size: 0.80rem;
+	font-size: 1rem;
 	font-weight: 600;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
