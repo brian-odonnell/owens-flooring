@@ -92,15 +92,15 @@
 								required />
 						</div>
 						<div class="form-field">
-							<label for="phone">Phone</label>
+							<label for="phone">Phone *</label>
 							<input id="phone" v-model="form.phone" name="phone" type="tel"
-								placeholder="(440) 000-0000" />
+								placeholder="(440) 000-0000" required />
 						</div>
 					</div>
 
 					<div class="form-field">
-						<label for="service">Service Needed</label>
-						<select id="service" v-model="form.service" name="service">
+						<label for="service">Service Needed *</label>
+						<select id="service" v-model="form.service" name="service" required>
 							<option value="">Select a service…</option>
 							<option>Hardwood / Engineered Wood</option>
 							<option>Luxury Vinyl Plank (LVP)</option>
@@ -113,8 +113,8 @@
 					</div>
 
 					<div class="form-field">
-						<label for="sqft">Approximate Square Footage</label>
-						<input id="sqft" v-model="form.sqft" name="sqft" type="text" placeholder="e.g. 3,000 sq ft" />
+						<label for="sqft">Approximate Square Footage *</label>
+						<input id="sqft" v-model="form.sqft" name="sqft" type="text" placeholder="e.g. 3,000 sq ft" required />
 					</div>
 
 					<div class="form-field">
@@ -128,8 +128,8 @@
 					</p>
 
 					<button type="submit" class="btn-primary form-submit" :disabled="submitted">
-						<span v-if="!submitted">Send My Request</span>
-						<span v-else>✓ Message Sent!</span>
+						<span v-if="!submitted">Send My Project Details</span>
+						<span v-else>✓ Project Details Sent!</span>
 					</button>
 				</form>
 			</div>

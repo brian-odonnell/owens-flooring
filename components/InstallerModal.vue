@@ -32,35 +32,25 @@
 								placeholder="jane@example.com" required />
 						</div>
 
-						<div class="form-row">
-							<div class="form-field">
-								<label for="installer-trade">Trade / Specialty</label>
-								<select id="installer-trade" v-model="form.trade" name="trade">
-									<option value="">Select a trade…</option>
-									<option>Carpet</option>
-									<option>Resilient (VCT, LVT, Vinyl)</option>
-									<option>Ceramic / Tile</option>
-									<option>Wood / Hardwood</option>
-									<option>Substrate Prep</option>
-									<option>General Labor</option>
-									<option>Other</option>
-								</select>
-							</div>
-							<div class="form-field">
-								<label for="installer-experience">Years of Experience</label>
-								<input id="installer-experience" v-model="form.experience" name="experience"
-									type="text" placeholder="e.g. 5 years" />
-							</div>
+						<div class="form-field">
+							<label for="installer-experience">Experience Level *</label>
+							<select id="installer-experience" v-model="form.experience" name="experience">
+								<option value="">Select your experience level…</option>
+								<option>Apprentice</option>
+								<option>Journeyman</option>
+							</select>
 						</div>
 
 						<div class="form-field">
-							<label for="installer-union">Union Member?</label>
-							<select id="installer-union" v-model="form.union" name="union">
-								<option value="">Select an option…</option>
-								<option>Yes</option>
-								<option>No</option>
-								<option>Applying / In Process</option>
-							</select>
+							<label for="installer-years">Years of Experience *</label>
+							<input id="installer-years" v-model="form.years" name="years"
+								type="text" placeholder="e.g. 5 years" required />
+						</div>
+
+						<div class="form-field">
+							<label for="installer-types">Flooring Installed *</label>
+							<textarea id="installer-types" v-model="form.types" name="types" rows="4"
+								placeholder="Carpet, tile, VCT, etc."></textarea>
 						</div>
 
 						<div class="form-field">

@@ -9,7 +9,7 @@
 					Tell us about yourself and we'll be in touch.
 				</p>
 			</div>
-			<button type="button" class="btn-primary" @click="isOpen = true">Apply as an Installer</button>
+			<button type="button" class="btn-primary" @click="isOpen = true">Tell Us About Yourself</button>
 		</div>
 	</section>
 </template>

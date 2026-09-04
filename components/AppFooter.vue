@@ -30,7 +30,7 @@
 			</div>
 
 			<div class="footer-bottom">
-				<p class="footer-copy">&copy; {{ year }} Owens Flooring Company. All rights reserved.</p>
+				<p class="footer-copy">&copy; {{ year }} Owens Flooring Co. All rights reserved.</p>
 			</div>
 		</div>
 	</footer>
