@@ -5,11 +5,7 @@
 				<!-- Brand -->
 				<div class="footer-brand">
 					<a href="#hero" class="footer-logo">
-						<span class="logo-mark">O</span>
-						<span class="logo-text">
-							<span class="logo-name">Owens Flooring Co.</span>
-							<span class="logo-sub">Commercial Flooring</span>
-						</span>
+						<img src="/assets/logos/OFC-Logo-White.svg" alt="Owens Flooring Co. Logo">
 					</a>
 					<p class="footer-tagline">
 						Professional commercial flooring installation for offices, retail, industrial, and hospitality spaces.
@@ -47,8 +43,8 @@ const year = new Date().getFullYear()
 
 <style scoped>
 .footer {
-	background: var(--coal);
-	color: #fff;
+	background: var(--navy-900);
+	color: var(--sky-50);
 	padding: 72px 32px 32px;
 	border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -72,13 +68,17 @@ const year = new Date().getFullYear()
 	align-items: center;
 	gap: 12px;
 	margin-bottom: 20px;
+
+	img {
+		width: 200px;
+	}
 }
 
 .logo-mark {
 	width: 36px;
 	height: 36px;
-	background: var(--cerulean);
-	color: #fff;
+	background: var(--sky);
+	color: var(--sky-50);
 	font-family: var(--font-display);
 	font-weight: 800;
 	font-size: 1.2rem;
@@ -100,7 +100,7 @@ const year = new Date().getFullYear()
 	font-weight: 800;
 	font-size: 1.1rem;
 	letter-spacing: 0.05em;
-	color: #fff;
+	color: var(--sky-50);
 	text-transform: uppercase;
 }
 
@@ -123,13 +123,13 @@ const year = new Date().getFullYear()
 	font-family: var(--font-display);
 	font-size: 1.1rem;
 	font-weight: 700;
-	color: var(--sky);
+	color: var(--marigold);
 	letter-spacing: 0.05em;
 	transition: color 0.2s;
 }
 
 .footer-phone:hover {
-	color: #fff;
+	color: var(--sky-50);
 }
 
 /* Nav groups */
@@ -139,7 +139,7 @@ const year = new Date().getFullYear()
 	font-weight: 700;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
-	color: #fff;
+	color: var(--sky-50);
 	margin-bottom: 20px;
 }
 
@@ -156,7 +156,7 @@ const year = new Date().getFullYear()
 }
 
 .footer-links a {
-	color: #fff;
+	color: var(--sky-50);
 	transition: color 0.2s;
 	text-decoration: underline;
 }
@@ -182,7 +182,7 @@ const year = new Date().getFullYear()
 	font-family: var(--font-display);
 	font-size: 0.72rem;
 	letter-spacing: 0.08em;
-	color: #fff;
+	color: var(--sky-50);
 }
 
 @media (max-width: 1024px) {

@@ -55,7 +55,7 @@
 	min-height: 100svh;
 	display: flex;
 	align-items: center;
-	color: #fff;
+	color: var(--sky-50);
 	overflow: hidden;
 }
 
@@ -68,7 +68,7 @@
 .hero-img-placeholder {
 	position: absolute;
 	inset: 0;
-	background: var(--bark);
+	background: var(--navy);
 }
 
 /* Placeholder geometric pattern — remove when real image is added */
@@ -174,7 +174,7 @@
 	font-size: 0.90rem;
 	letter-spacing: 0.10em;
 	text-transform: uppercase;
-	color: #fff;
+	color: var(--sky-50);
 }
 
 .stat-divider {
@@ -190,7 +190,7 @@
 	left: 0;
 	right: 0;
 	height: 80px;
-	background: var(--ice);
+	background: var(--sky-50);
 	clip-path: polygon(0 100%, 100% 0, 100% 100%);
 	z-index: 2;
 }

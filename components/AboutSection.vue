@@ -68,8 +68,8 @@ const team = [
 <style scoped>
 .about {
 	padding: 100px 32px;
-	background: var(--coal);
-	color: #fff;
+	background: var(--navy-900);
+	color: var(--sky-50);
 	overflow: hidden;
 }
 
@@ -113,8 +113,8 @@ const team = [
 	right: 24px;
 	width: 100px;
 	height: 100px;
-	background: var(--cerulean);
-	color: #fff;
+	background: var(--sky);
+	color: var(--navy-900);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -143,7 +143,7 @@ const team = [
 /* Text column */
 .about-title {
 	font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-	color: #fff;
+	color: var(--sky-50);
 	margin: 12px 0 24px;
 }
 
@@ -170,7 +170,7 @@ const team = [
 	flex-shrink: 0;
 	width: 10px;
 	height: 10px;
-	background: var(--cerulean);
+	background: var(--sky);
 	margin-top: 9px;
 	clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
@@ -180,7 +180,7 @@ const team = [
 	font-size: 1rem;
 	font-weight: 700;
 	letter-spacing: 0.03em;
-	color: #fff;
+	color: var(--sky-50);
 	margin-bottom: 2px;
 }
 
@@ -217,7 +217,7 @@ const team = [
 	font-size: clamp(1.6rem, 2.5vw, 2.2rem);
 	font-weight: 700;
 	letter-spacing: 0.02em;
-	color: #fff;
+	color: var(--sky-50);
 	margin-bottom: 8px;
 }
 
@@ -227,7 +227,7 @@ const team = [
 	font-weight: 600;
 	letter-spacing: 0.15em;
 	text-transform: uppercase;
-	color: var(--cerulean);
+	color: var(--sky);
 }
 
 @media (max-width: 960px) {

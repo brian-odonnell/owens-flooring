@@ -20,8 +20,8 @@
   top: -100%;
   left: 0;
   padding: 12px 24px;
-  background: var(--cerulean);
-  color: #fff;
+  background: var(--sky);
+  color: var(--sky-50);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.9rem;

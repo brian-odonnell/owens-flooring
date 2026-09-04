@@ -3,11 +3,7 @@
 		<div class="nav-inner">
 			<!-- Logo -->
 			<a href="#hero" class="nav-logo" @click="menuOpen = false">
-				<span class="logo-mark">O</span>
-				<span class="logo-text">
-					<span class="logo-name">Owens Flooring Co.</span>
-					<span class="logo-sub">Commercial Flooring</span>
-				</span>
+				<img src="/assets/logos/OFC-Logo-White.svg" alt="Owens Flooring Co. Logo">
 			</a>
 
 			<!-- Desktop nav links -->
@@ -77,7 +73,7 @@ onMounted(() => {
 }
 
 .nav-wrap.scrolled {
-	background: var(--coal);
+	background: var(--navy-900);
 	box-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
 }
 
@@ -97,13 +93,17 @@ onMounted(() => {
 	align-items: center;
 	gap: 12px;
 	flex-shrink: 0;
+
+	img {
+		height: 40px;
+	}
 }
 
 .logo-mark {
 	width: 40px;
 	height: 40px;
-	background: var(--cerulean);
-	color: #fff;
+	background: var(--sky);
+	color: var(--sky-50);
 	font-family: var(--font-display);
 	font-weight: 800;
 	font-size: 1.4rem;
@@ -124,7 +124,7 @@ onMounted(() => {
 	font-weight: 800;
 	font-size: 1.2rem;
 	letter-spacing: 0.05em;
-	color: #fff;
+	color: var(--sky-50);
 	text-transform: uppercase;
 }
 
@@ -132,7 +132,7 @@ onMounted(() => {
 	font-family: var(--font-display);
 	font-size: 0.65rem;
 	letter-spacing: 0.15em;
-	color: var(--light-slate);
+	color: var(--sky);
 	text-transform: uppercase;
 }
 
@@ -161,12 +161,12 @@ onMounted(() => {
 	left: 0;
 	width: 0;
 	height: 2px;
-	background: var(--cerulean);
+	background: var(--sky);
 	transition: width 0.2s;
 }
 
 .nav-link:hover {
-	color: #fff;
+	color: var(--sky-50);
 }
 
 .nav-link:hover::after {
@@ -189,12 +189,12 @@ onMounted(() => {
 	font-weight: 600;
 	font-size: 0.9rem;
 	letter-spacing: 0.05em;
-	color: var(--sky);
+	color: var(--marigold);
 	transition: color 0.2s;
 }
 
 .nav-phone:hover {
-	color: #fff;
+	color: var(--sky-50);
 }
 
 /* Hamburger */
@@ -213,7 +213,7 @@ onMounted(() => {
 	display: block;
 	width: 26px;
 	height: 2px;
-	background: #fff;
+	background: var(--sky-50);
 	transition: transform 0.25s, opacity 0.25s;
 }
 
@@ -234,7 +234,7 @@ onMounted(() => {
 	display: none;
 	flex-direction: column;
 	gap: 4px;
-	background: var(--bark);
+	background: var(--navy);
 	padding: 0 24px;
 	max-height: 0;
 	overflow: hidden;
@@ -286,7 +286,7 @@ onMounted(() => {
 	}
 
 	.nav-wrap.menu-open {
-		background: var(--coal);
+		background: var(--navy-900);
 	}
 }
 </style>

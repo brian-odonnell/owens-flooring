@@ -1,12 +1,13 @@
 :root {
-  --coal: #1a1714;
-  --bark: #2e2720;
-  --cerulean: #0096c7;
-  --sky: #48cae4;
-  --mist: #e8f4f8;
-  --ice: #f4f9fc;
-  --slate: #3d5a6a;
-  --light-slate: #8aafc0;
+  --sky: #8FC6E8;
+  --sky-50: #EEF6FC;
+  --sky-800: #2682BA;
+  --navy: #405472;
+  --navy-900: #11161D;
+  --slate: #7B838E;
+  --slate-950: #151719;
+  --marigold: #E6A037;
+
 
   --font-display: 'Barlow Condensed', sans-serif;
   --font-body: 'Lora', serif;
@@ -27,8 +28,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--ice);
-  color: var(--coal);
+  background: var(--navy-900);
+  color: var(--navy-900);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -50,19 +51,19 @@ section {
 
 /* Focus styles */
 *:focus-visible {
-  outline: 2px solid var(--cerulean);
+  outline: 2px solid var(--sky);
   outline-offset: 3px;
 }
 
 .btn-primary:focus-visible {
   clip-path: none;
-  outline: 2px solid #fff;
+  outline: 2px solid var(--sky-50);
   outline-offset: 3px;
 }
 
 .btn-outline:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px var(--cerulean);
+  box-shadow: 0 0 0 3px var(--sky);
 }
 
 /* Utility */
@@ -72,7 +73,7 @@ section {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--cerulean);
+  color: var(--sky);
 }
 
 .section-title {
@@ -90,8 +91,8 @@ section {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 14px 36px;
-  background: var(--cerulean);
-  color: #fff;
+  background: var(--marigold);
+  color: var(--slate-950);
   border: none;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, transform 0.15s;
@@ -99,8 +100,8 @@ section {
 }
 
 .btn-primary:hover {
-  background: var(--sky);
-  color: var(--coal);
+  background: var(--sky-50);
+  color: var(--navy-900);
   transform: translateY(-2px);
 }
 
@@ -113,13 +114,13 @@ section {
   text-transform: uppercase;
   padding: 13px 36px;
   background: transparent;
-  color: #fff;
+  color: var(--sky-50);
   border: 2px solid rgba(255,255,255,0.5);
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
 }
 
 .btn-outline:hover {
-  border-color: #fff;
+  border-color: var(--sky-50);
   background: rgba(255,255,255,0.08);
 }

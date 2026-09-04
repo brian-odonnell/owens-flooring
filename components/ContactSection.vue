@@ -171,8 +171,8 @@ async function handleSubmit(event) {
 <style scoped>
 .contact {
 	padding: 100px 32px;
-	background: var(--ice);
-	color: var(--coal);
+	background: var(--sky-50);
+	color: var(--navy-900);
 }
 
 .contact-inner {
@@ -184,15 +184,19 @@ async function handleSubmit(event) {
 	align-items: start;
 }
 
+.section-label {
+	color: var(--sky-800);
+}
+
 /* Info panel */
 .contact-title {
 	font-size: clamp(1.8rem, 3vw, 2.8rem);
-	color: var(--coal);
+	color: var(--navy-900);
 	margin: 12px 0 20px;
 }
 
 .contact-sub {
-	color: var(--slate);
+	color: var(--slate-950);
 	font-size: 0.95rem;
 	margin-bottom: 40px;
 }
@@ -212,15 +216,15 @@ async function handleSubmit(event) {
 }
 
 a.contact-detail-item:hover .detail-value {
-	color: var(--cerulean);
+	color: var(--sky);
 }
 
 .detail-icon {
 	flex-shrink: 0;
 	width: 42px;
 	height: 42px;
-	background: var(--cerulean);
-	color: #fff;
+	background: var(--sky-800);
+	color: var(--sky-50);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -232,7 +236,7 @@ a.contact-detail-item:hover .detail-value {
 	font-weight: 700;
 	letter-spacing: 0.15em;
 	text-transform: uppercase;
-	color: var(--slate);
+	color: var(--slate-950);
 	margin-bottom: 2px;
 }
 
@@ -240,13 +244,13 @@ a.contact-detail-item:hover .detail-value {
 	font-family: var(--font-display);
 	font-size: 1rem;
 	font-weight: 600;
-	color: var(--coal);
+	color: var(--navy-900);
 	transition: color 0.2s;
 }
 
 /* Form */
 .contact-form-wrap {
-	background: var(--bark);
+	background: var(--slate-950);
 	border: 1px solid rgba(255, 255, 255, 0.06);
 	padding: 48px;
 }
@@ -283,7 +287,7 @@ a.contact-detail-item:hover .detail-value {
 .form-field textarea {
 	background: rgba(255, 255, 255, 0.06);
 	border: 1px solid rgba(255, 255, 255, 0.35);
-	color: #fff;
+	color: var(--sky-50);
 	font-family: var(--font-body);
 	font-size: 0.9rem;
 	padding: 12px 16px;
@@ -301,8 +305,8 @@ a.contact-detail-item:hover .detail-value {
 }
 
 .form-field select option {
-	background: var(--bark);
-	color: #fff;
+	background: var(--navy);
+	color: var(--sky-50);
 }
 
 .form-field input::placeholder,
@@ -313,7 +317,7 @@ a.contact-detail-item:hover .detail-value {
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-	border-color: var(--cerulean);
+	border-color: var(--sky);
 	background: rgba(255, 255, 255, 0.09);
 }
 

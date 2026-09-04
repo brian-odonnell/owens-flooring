@@ -153,8 +153,8 @@ onUnmounted(() => {
 	max-width: 560px;
 	max-height: calc(100vh - 48px);
 	overflow-y: auto;
-	background: var(--bark);
-	color: #fff;
+	background: var(--slate-950);
+	color: var(--sky-50);
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	padding: 48px;
 }
@@ -178,14 +178,14 @@ onUnmounted(() => {
 }
 
 .modal-close:hover {
-	color: #fff;
+	color: var(--sky-50);
 }
 
 .modal-title {
 	font-family: var(--font-display);
 	font-weight: 800;
 	font-size: clamp(1.5rem, 3vw, 2rem);
-	color: #fff;
+	color: var(--sky-50);
 	margin: 10px 0 14px;
 }
 
@@ -227,7 +227,7 @@ onUnmounted(() => {
 .form-field textarea {
 	background: rgba(255, 255, 255, 0.06);
 	border: 1px solid rgba(255, 255, 255, 0.35);
-	color: #fff;
+	color: var(--sky-50);
 	font-family: var(--font-body);
 	font-size: 0.9rem;
 	padding: 12px 16px;
@@ -245,8 +245,8 @@ onUnmounted(() => {
 }
 
 .form-field select option {
-	background: var(--bark);
-	color: #fff;
+	background: var(--navy);
+	color: var(--sky-50);
 }
 
 .form-field input::placeholder,
@@ -257,7 +257,7 @@ onUnmounted(() => {
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-	border-color: var(--cerulean);
+	border-color: var(--sky);
 	background: rgba(255, 255, 255, 0.09);
 }
 

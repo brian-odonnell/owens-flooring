@@ -21,7 +21,7 @@ const isOpen = useState('installerModalOpen', () => false)
 <style scoped>
 .installers {
 	padding: 64px 32px;
-	background: var(--coal);
+	background: var(--navy-900);
 }
 
 .installers-inner {
@@ -35,7 +35,7 @@ const isOpen = useState('installerModalOpen', () => false)
 
 .installers-title {
 	font-size: clamp(1.5rem, 2.5vw, 2.1rem);
-	color: #fff;
+	color: var(--sky-50);
 	margin: 10px 0 12px;
 }
 
