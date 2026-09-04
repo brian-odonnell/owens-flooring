@@ -11,7 +11,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Professional commercial flooring installation and services. Hardwood, tile, LVP, carpet, and epoxy for businesses across the region.' }
+        { name: 'description', content: 'Owens Flooring Co. installs commercial carpet, tile, hardwood, resilient flooring & more across Northeast Ohio. Family owned, union installed since 1965.' }
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
