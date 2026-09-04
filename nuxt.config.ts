@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
     head: {
-      title: 'Owens Flooring Company | Willoughby, OH',
+      title: 'Owens Flooring Co. | Commercial Flooring | Willoughby, OH',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
