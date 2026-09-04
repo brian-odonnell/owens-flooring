@@ -210,7 +210,7 @@ async function handleSubmit(event) {
 .contact-detail-item {
 	display: flex;
 	gap: 16px;
-	align-items: flex-start;
+	align-items: center;
 	color: inherit;
 	transition: all 0.2s;
 }
