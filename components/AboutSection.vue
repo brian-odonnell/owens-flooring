@@ -4,9 +4,7 @@
 			<!-- Image column -->
 			<div class="about-media">
 				<div class="about-img">
-					<img src="/assets/img/office-2.png"
-						alt="Owens Flooring Company office at 38270 Airport Pkwy, Willoughby OH">
-					<!-- <div class="img-placeholder"></div> -->
+					<img src="/assets/img/OFC-Building-.jpg" alt="Owens Flooring Co. office"/>
 				</div>
 				<div class="about-badge">
 					<span class="badge-num">Est.</span>
