@@ -150,7 +150,7 @@
 /* Stats */
 .hero-stats {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	gap: 28px;
 	animation: fadeUp 0.6s 0.4s ease both;
 }
