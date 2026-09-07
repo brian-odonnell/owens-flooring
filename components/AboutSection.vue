@@ -4,7 +4,7 @@
 			<!-- Image column -->
 			<div class="about-media">
 				<div class="about-img">
-					<img src="/assets/img/OFC-Building-.jpg" alt="Owens Flooring Co. office"/>
+					<img src="/assets/img/OFC-Building.jpg" alt="Owens Flooring Co. office"/>
 				</div>
 				<div class="about-badge">
 					<span class="badge-num">Est.</span>
