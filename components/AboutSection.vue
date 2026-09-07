@@ -98,21 +98,13 @@ const team = [
 	object-fit: cover;
 }
 
-.img-placeholder {
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(135deg, #2e2720 0%, #3d3228 100%);
-	background-image:
-		repeating-linear-gradient(45deg, rgba(200, 146, 42, 0.06) 0px, rgba(200, 146, 42, 0.06) 1px, transparent 1px, transparent 50px);
-}
-
 .about-badge {
 	position: absolute;
 	bottom: -20px;
 	right: 24px;
 	width: 100px;
 	height: 100px;
-	background: var(--sky);
+	background: var(--sky-50);
 	color: var(--navy-900);
 	display: flex;
 	flex-direction: column;

@@ -15,7 +15,6 @@
 
 				<!-- Contact -->
 				<div class="footer-nav-group">
-					<h4 class="footer-heading">Contact</h4>
 					<ul class="footer-links contact-list">
 						<li>
 							<a href="tel:+14402691112">(440) 269-1112</a>
@@ -136,17 +135,6 @@ const year = new Date().getFullYear()
 
 .footer-phone:hover {
 	color: var(--sky-50);
-}
-
-/* Nav groups */
-.footer-heading {
-	font-family: var(--font-display);
-	font-size: 1rem;
-	font-weight: 700;
-	letter-spacing: 0.18em;
-	text-transform: uppercase;
-	color: var(--sky-50);
-	margin-bottom: 20px;
 }
 
 .footer-links {
