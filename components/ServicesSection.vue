@@ -15,7 +15,7 @@
 			<div class="services-grid">
 				<div v-for="service in services" :key="service.title" class="service-card">
 					<div class="service-card-top">
-						<div class="service-icon">
+						<div class="service-icon" aria-hidden="true">
 							<span v-html="service.icon"></span>
 						</div>
 					</div>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link" @click="focusMainContent">Skip to main content</a>
     <AppNav />
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <HeroSection />
       <ServicesSection />
 <AboutSection />
@@ -14,6 +14,12 @@
   </div>
 </template>
 
+<script setup>
+function focusMainContent() {
+  document.getElementById('main-content')?.focus()
+}
+</script>
+
 <style>
 .skip-link {
   position: absolute;
@@ -21,7 +27,7 @@
   left: 0;
   padding: 12px 24px;
   background: var(--sky);
-  color: var(--sky-50);
+  color: var(--slate-950);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1rem;

@@ -30,7 +30,7 @@
 
 			<div class="footer-bottom">
 				<p class="footer-copy">&copy; {{ year }} Owens Flooring Co. All rights reserved.</p>
-				<a href="/privacy-policy.html" class="footer-legal-link">Privacy Policy</a>
+				<a href="/privacy-policy.html" class="footer-legal-link" @keydown="handleLegalLinkKeydown">Privacy Policy</a>
 			</div>
 		</div>
 	</footer>
@@ -40,6 +40,13 @@
 import LogoSvg from './LogoSvg.vue'
 
 const year = new Date().getFullYear()
+
+function handleLegalLinkKeydown(e) {
+	if (e.key === 'Tab' && !e.shiftKey) {
+		e.preventDefault()
+		document.querySelector('.skip-link')?.focus()
+	}
+}
 </script>
 
 <style scoped>
@@ -65,9 +72,8 @@ const year = new Date().getFullYear()
 
 /* Brand column */
 .footer-logo {
-	display: flex;
+	display: inline-block;
 	align-items: center;
-	gap: 12px;
 	margin-bottom: 20px;
 
 	div {

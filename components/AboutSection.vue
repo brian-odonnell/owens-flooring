@@ -27,7 +27,7 @@
 					<div v-for="val in values" :key="val.title" class="value-item">
 						<div class="value-dot"></div>
 						<div>
-							<h4 class="value-title">{{ val.title }}</h4>
+							<h3 class="value-title">{{ val.title }}</h3>
 							<p class="value-desc">{{ val.desc }}</p>
 						</div>
 					</div>

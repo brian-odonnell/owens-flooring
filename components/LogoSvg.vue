@@ -1,4 +1,6 @@
 <script setup>
+defineOptions({ inheritAttrs: false })
+
 defineProps({
     class: {
         type: [String, Array, Object],
@@ -9,7 +11,7 @@ defineProps({
 
 <template>
     <div :class="class">
-        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 209.62 44.01" preserveAspectRatio="xMidYMid meet">
+        <svg v-bind="$attrs" role="img" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 209.62 44.01" preserveAspectRatio="xMidYMid meet">
         <g>
             <rect class="cls-1" width="12.62" height="12.62"/>
             <rect class="cls-1" y="14.2" width="12.62" height="12.62"/>

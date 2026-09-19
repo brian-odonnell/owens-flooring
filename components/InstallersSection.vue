@@ -9,13 +9,21 @@
 					Tell us about yourself and we'll be in touch.
 				</p>
 			</div>
-			<button type="button" class="btn-primary" @click="isOpen = true">Tell Us About Yourself</button>
+			<button ref="triggerBtnRef" type="button" class="btn-primary" @click="isOpen = true">Tell Us About Yourself</button>
 		</div>
 	</section>
 </template>
 
 <script setup>
 const isOpen = useState('installerModalOpen', () => false)
+const triggerBtnRef = ref(null)
+
+watch(isOpen, async (open, wasOpen) => {
+	if (!open && wasOpen) {
+		await nextTick()
+		triggerBtnRef.value?.focus()
+	}
+})
 </script>
 
 <style scoped>

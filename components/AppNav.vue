@@ -28,13 +28,13 @@
 
 			<!-- Hamburger -->
 			<button class="nav-hamburger" :class="{ active: menuOpen }" @click="menuOpen = !menuOpen"
-				aria-label="Toggle menu">
+				aria-label="Toggle menu" aria-controls="mobile-menu" :aria-expanded="menuOpen">
 				<span></span><span></span><span></span>
 			</button>
 		</div>
 
 		<!-- Mobile menu -->
-		<div class="mobile-menu" :class="{ open: menuOpen }">
+		<div id="mobile-menu" class="mobile-menu" :class="{ open: menuOpen }">
 			<a v-for="link in navLinks" :key="link.href" :href="link.href" class="mobile-link"
 				@click="menuOpen = false">
 				{{ link.label }}
@@ -58,6 +58,7 @@ const navLinks = [
 ]
 
 onMounted(() => {
+	isScrolled.value = window.scrollY > 40
 	window.addEventListener('scroll', () => {
 		isScrolled.value = window.scrollY > 40
 	})

@@ -2,72 +2,76 @@
 	<Teleport to="body">
 		<Transition name="modal-fade">
 			<div v-if="isOpen" class="installer-modal-overlay" @click.self="close">
-				<div class="installer-modal" role="dialog" aria-modal="true" aria-labelledby="installer-modal-title">
-					<button type="button" class="modal-close" aria-label="Close" @click="close">&times;</button>
+				<div ref="modalRef" class="installer-modal" role="dialog" aria-modal="true" aria-labelledby="installer-modal-title">
+					<div class="modal-header">
+						<button type="button" class="modal-close" aria-label="Close" @click="close">&times;</button>
+					</div>
 
-					<p class="section-label">Join Our Team</p>
-					<h3 id="installer-modal-title" class="modal-title">Installer Interest Form</h3>
-					<p class="modal-sub">
-						Tell us a bit about your experience and we'll reach out when we have work that fits.
-					</p>
-
-					<form class="installer-form" action="https://formspree.io/f/xjykggvl" method="POST"
-						@submit.prevent="handleSubmit">
-						<div class="form-row">
-							<div class="form-field">
-								<label for="installer-name">Full Name *</label>
-								<input id="installer-name" v-model="form.name" name="name" type="text"
-									placeholder="Jane Smith" required />
-							</div>
-							<div class="form-field">
-								<label for="installer-phone">Phone *</label>
-								<input id="installer-phone" v-model="form.phone" name="phone" type="tel"
-									placeholder="(440) 000-0000" required />
-							</div>
-						</div>
-
-						<div class="form-field">
-							<label for="installer-email">Email *</label>
-							<input id="installer-email" v-model="form.email" name="email" type="email"
-								placeholder="jane@example.com" required />
-						</div>
-
-						<div class="form-field">
-							<label for="installer-experience">Experience Level *</label>
-							<select id="installer-experience" v-model="form.experience" name="experience">
-								<option value="">Select your experience level…</option>
-								<option>Apprentice</option>
-								<option>Journeyman</option>
-							</select>
-						</div>
-
-						<div class="form-field">
-							<label for="installer-years">Years of Experience *</label>
-							<input id="installer-years" v-model="form.years" name="years"
-								type="text" placeholder="e.g. 5 years" required />
-						</div>
-
-						<div class="form-field">
-							<label for="installer-types">Flooring Installed *</label>
-							<textarea id="installer-types" v-model="form.types" name="types" rows="4"
-								placeholder="Carpet, tile, VCT, etc."></textarea>
-						</div>
-
-						<div class="form-field">
-							<label for="installer-message">Additional Info</label>
-							<textarea id="installer-message" v-model="form.message" name="message" rows="4"
-								placeholder="Availability, certifications, referrals, etc."></textarea>
-						</div>
-
-						<p v-if="submitError" class="form-error">
-							Something went wrong submitting your info. Please try again or call us directly.
+					<div class="installer-modal-content">
+						<p class="section-label">Join Our Team</p>
+						<h3 id="installer-modal-title" class="modal-title">Installer Interest Form</h3>
+						<p class="modal-sub">
+							Tell us a bit about your experience and we'll reach out when we have work that fits.
 						</p>
 
-						<button type="submit" class="btn-primary form-submit" :disabled="submitted">
-							<span v-if="!submitted">Submit Interest</span>
-							<span v-else>✓ Submitted!</span>
-						</button>
-					</form>
+						<form class="installer-form" action="https://formspree.io/f/xjykggvl" method="POST"
+							@submit.prevent="handleSubmit">
+							<div class="form-row">
+								<div class="form-field">
+									<label for="installer-name">Full Name *</label>
+									<input id="installer-name" v-model="form.name" name="name" type="text"
+										placeholder="Jane Smith" required />
+								</div>
+								<div class="form-field">
+									<label for="installer-phone">Phone *</label>
+									<input id="installer-phone" :value="form.phone" @input="onPhoneInput" name="phone" type="tel"
+										placeholder="(440) 000-0000" maxlength="14" required />
+								</div>
+							</div>
+
+							<div class="form-field">
+								<label for="installer-email">Email *</label>
+								<input id="installer-email" v-model="form.email" name="email" type="email"
+									placeholder="jane@example.com" required />
+							</div>
+
+							<div class="form-field">
+								<label for="installer-experience">Experience Level *</label>
+								<select id="installer-experience" v-model="form.experience" name="experience">
+									<option value="">Select your experience level…</option>
+									<option>Apprentice</option>
+									<option>Journeyman</option>
+								</select>
+							</div>
+
+							<div class="form-field">
+								<label for="installer-years">Years of Experience *</label>
+								<input id="installer-years" v-model="form.years" name="years"
+									type="text" placeholder="e.g. 5 years" required />
+							</div>
+
+							<div class="form-field">
+								<label for="installer-types">Flooring Installed *</label>
+								<textarea id="installer-types" v-model="form.types" name="types" rows="4"
+									placeholder="Carpet, tile, VCT, etc."></textarea>
+							</div>
+
+							<div class="form-field">
+								<label for="installer-message">Additional Info</label>
+								<textarea id="installer-message" v-model="form.message" name="message" rows="4"
+									placeholder="Availability, certifications, referrals, etc."></textarea>
+							</div>
+
+							<p v-if="submitError" class="form-error">
+								Something went wrong submitting your info. Please try again or call us directly.
+							</p>
+
+							<button type="submit" class="btn-primary form-submit" :disabled="submitted">
+								<span v-if="!submitted">Submit Interest</span>
+								<span v-else>✓ Submitted!</span>
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</Transition>
@@ -89,9 +93,38 @@ const form = reactive({
 
 const submitted = ref(false)
 const submitError = ref(false)
+const modalRef = ref(null)
+
+function onPhoneInput(event) {
+	form.phone = formatPhoneNumber(event.target.value)
+}
 
 function close() {
 	isOpen.value = false
+}
+
+function getFocusableEls() {
+	if (!modalRef.value) return []
+	return Array.from(
+		modalRef.value.querySelectorAll(
+			'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+		)
+	).filter((el) => el.offsetParent !== null)
+}
+
+function handleTab(e) {
+	const focusable = getFocusableEls()
+	if (!focusable.length) return
+	const first = focusable[0]
+	const last = focusable[focusable.length - 1]
+
+	if (e.shiftKey && document.activeElement === first) {
+		e.preventDefault()
+		last.focus()
+	} else if (!e.shiftKey && document.activeElement === last) {
+		e.preventDefault()
+		first.focus()
+	}
 }
 
 async function handleSubmit(event) {
@@ -110,11 +143,19 @@ async function handleSubmit(event) {
 }
 
 function handleKeydown(e) {
-	if (e.key === 'Escape') close()
+	if (e.key === 'Escape') {
+		close()
+	} else if (e.key === 'Tab' && isOpen.value) {
+		handleTab(e)
+	}
 }
 
-watch(isOpen, (open) => {
+watch(isOpen, async (open) => {
 	document.body.style.overflow = open ? 'hidden' : ''
+	if (open) {
+		await nextTick()
+		modalRef.value?.querySelector('.modal-close')?.focus()
+	}
 })
 
 onMounted(() => window.addEventListener('keydown', handleKeydown))
@@ -141,17 +182,28 @@ onUnmounted(() => {
 	width: 100%;
 	max-width: 560px;
 	max-height: calc(100vh - 48px);
-	overflow-y: auto;
 	background: var(--slate-950);
 	color: var(--sky-50);
 	border: 1px solid rgba(255, 255, 255, 0.08);
+	display: flex;
+	flex-direction: column;
+}
+
+.installer-modal-content {
+	overflow-y: auto;
 	padding: 48px;
 }
 
+.modal-header {
+	flex-shrink: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 8px 8px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .modal-close {
-	position: absolute;
-	top: 16px;
-	right: 16px;
 	width: 36px;
 	height: 36px;
 	display: flex;
@@ -220,9 +272,14 @@ onUnmounted(() => {
 	font-family: var(--font-body);
 	font-size: 1rem;
 	padding: 12px 16px;
-	outline: none;
 	transition: border-color 0.2s, background 0.2s;
 	appearance: none;
+}
+
+.form-field input:focus:not(:focus-visible),
+.form-field select:focus:not(:focus-visible),
+.form-field textarea:focus:not(:focus-visible) {
+	outline: none;
 }
 
 .form-field select {
@@ -231,6 +288,11 @@ onUnmounted(() => {
 	background-position: right 14px center;
 	background-size: 16px;
 	cursor: pointer;
+}
+
+.form-field select:-moz-focusring {
+	color: transparent;
+	text-shadow: 0 0 0 var(--sky-50);
 }
 
 .form-field select option {
@@ -247,7 +309,7 @@ onUnmounted(() => {
 .form-field select:focus,
 .form-field textarea:focus {
 	border-color: var(--sky-50);
-	background: rgba(255, 255, 255, 0.09);
+	background-color: rgba(255, 255, 255, 0.09);
 }
 
 .form-field textarea {
@@ -285,7 +347,7 @@ onUnmounted(() => {
 }
 
 @media (max-width: 600px) {
-	.installer-modal {
+	.installer-modal-content {
 		padding: 32px 24px;
 	}
 

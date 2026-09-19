@@ -72,56 +72,58 @@
 			<div class="contact-form-wrap">
 				<form class="contact-form" action="https://formspree.io/f/meaoeeqa" method="POST"
 					@submit.prevent="handleSubmit">
-					<div class="form-row">
-						<div class="form-field">
-							<label for="name">Your Name *</label>
-							<input id="name" v-model="form.name" name="name" type="text" placeholder="Jane Smith"
-								required />
+					<fieldset class="contact-form-fields" :disabled="submitted">
+						<div class="form-row">
+							<div class="form-field">
+								<label for="name">Your Name *</label>
+								<input id="name" v-model="form.name" name="name" type="text" placeholder="Jane Smith"
+									required />
+							</div>
+							<div class="form-field">
+								<label for="company">Company</label>
+								<input id="company" v-model="form.company" name="company" type="text"
+									placeholder="Acme Corp" />
+							</div>
 						</div>
-						<div class="form-field">
-							<label for="company">Company</label>
-							<input id="company" v-model="form.company" name="company" type="text"
-								placeholder="Acme Corp" />
+
+						<div class="form-row">
+							<div class="form-field">
+								<label for="email">Email *</label>
+								<input id="email" v-model="form.email" name="email" type="email" placeholder="jane@acme.com"
+									required />
+							</div>
+							<div class="form-field">
+								<label for="phone">Phone *</label>
+								<input id="phone" :value="form.phone" @input="onPhoneInput" name="phone" type="tel"
+									placeholder="(440) 000-0000" maxlength="14" required />
+							</div>
 						</div>
-					</div>
 
-					<div class="form-row">
 						<div class="form-field">
-							<label for="email">Email *</label>
-							<input id="email" v-model="form.email" name="email" type="email" placeholder="jane@acme.com"
-								required />
+							<label for="service">Service Needed *</label>
+							<select id="service" v-model="form.service" name="service" required>
+								<option value="">Select a service…</option>
+								<option>Hardwood / Engineered Wood</option>
+								<option>Luxury Vinyl Plank (LVP)</option>
+								<option>Ceramic / Porcelain Tile</option>
+								<option>Epoxy / Resin Coating</option>
+								<option>Commercial Carpet</option>
+								<option>Surface Prep / Repair</option>
+								<option>Not sure yet</option>
+							</select>
 						</div>
+
 						<div class="form-field">
-							<label for="phone">Phone *</label>
-							<input id="phone" v-model="form.phone" name="phone" type="tel"
-								placeholder="(440) 000-0000" required />
+							<label for="sqft">Approximate Square Footage *</label>
+							<input id="sqft" v-model="form.sqft" name="sqft" type="text" placeholder="e.g. 3,000 sq ft" required />
 						</div>
-					</div>
 
-					<div class="form-field">
-						<label for="service">Service Needed *</label>
-						<select id="service" v-model="form.service" name="service" required>
-							<option value="">Select a service…</option>
-							<option>Hardwood / Engineered Wood</option>
-							<option>Luxury Vinyl Plank (LVP)</option>
-							<option>Ceramic / Porcelain Tile</option>
-							<option>Epoxy / Resin Coating</option>
-							<option>Commercial Carpet</option>
-							<option>Surface Prep / Repair</option>
-							<option>Not sure yet</option>
-						</select>
-					</div>
-
-					<div class="form-field">
-						<label for="sqft">Approximate Square Footage *</label>
-						<input id="sqft" v-model="form.sqft" name="sqft" type="text" placeholder="e.g. 3,000 sq ft" required />
-					</div>
-
-					<div class="form-field">
-						<label for="message">Project Details *</label>
-						<textarea id="message" v-model="form.message" name="message" rows="4"
-							placeholder="Describe your space, timeline, and any other details…" required></textarea>
-					</div>
+						<div class="form-field">
+							<label for="message">Project Details *</label>
+							<textarea id="message" v-model="form.message" name="message" rows="4"
+								placeholder="Describe your space, timeline, and any other details…" required></textarea>
+						</div>
+					</fieldset>
 
 					<p v-if="submitError" class="form-error">
 						Something went wrong sending your message. Please try again or call us directly.
@@ -150,6 +152,10 @@ const form = reactive({
 
 const submitted = ref(false)
 const submitError = ref(false)
+
+function onPhoneInput(event) {
+	form.phone = formatPhoneNumber(event.target.value)
+}
 
 async function handleSubmit(event) {
 	submitError.value = false
@@ -219,6 +225,10 @@ a.contact-detail-item:hover .detail-value {
 	text-decoration: underline;
 }
 
+.contact-detail-item:focus-visible {
+	outline-color: var(--slate-950);
+}
+
 .detail-icon {
 	flex-shrink: 0;
 	width: 42px;
@@ -262,6 +272,20 @@ a.contact-detail-item:hover .detail-value {
 	gap: 20px;
 }
 
+.contact-form-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border: none;
+	margin: 0;
+	padding: 0;
+	min-width: 0;
+}
+
+.contact-form-fields:disabled {
+	opacity: 0.6;
+}
+
 .form-row {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -292,9 +316,14 @@ a.contact-detail-item:hover .detail-value {
 	font-family: var(--font-body);
 	font-size: 1rem;
 	padding: 12px 16px;
-	outline: none;
 	transition: border-color 0.2s, background 0.2s;
 	appearance: none;
+}
+
+.form-field input:focus:not(:focus-visible),
+.form-field select:focus:not(:focus-visible),
+.form-field textarea:focus:not(:focus-visible) {
+	outline: none;
 }
 
 .form-field select {
@@ -303,6 +332,11 @@ a.contact-detail-item:hover .detail-value {
 	background-position: right 14px center;
 	background-size: 16px;
 	cursor: pointer;
+}
+
+.form-field select:-moz-focusring {
+	color: transparent;
+	text-shadow: 0 0 0 var(--sky-50);
 }
 
 .form-field select option {
@@ -319,7 +353,7 @@ a.contact-detail-item:hover .detail-value {
 .form-field select:focus,
 .form-field textarea:focus {
 	border-color: var(--sky-50);
-	background: rgba(255, 255, 255, 0.09);
+	background-color: rgba(255, 255, 255, 0.09);
 }
 
 .form-field textarea {
