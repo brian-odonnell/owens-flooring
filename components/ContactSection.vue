@@ -70,7 +70,7 @@
 
 			<!-- Right form panel -->
 			<div class="contact-form-wrap">
-				<form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+				<form class="contact-form" action="https://formspree.io/f/meaoeeqa" method="POST"
 					@submit.prevent="handleSubmit">
 					<div class="form-row">
 						<div class="form-field">
@@ -151,7 +151,6 @@ const form = reactive({
 const submitted = ref(false)
 const submitError = ref(false)
 
-// Update the form's `action` attribute above with your real Formspree endpoint.
 async function handleSubmit(event) {
 	submitError.value = false
 	try {

@@ -11,7 +11,7 @@
 						Tell us a bit about your experience and we'll reach out when we have work that fits.
 					</p>
 
-					<form class="installer-form" action="https://formspree.io/f/YOUR_INSTALLER_FORM_ID" method="POST"
+					<form class="installer-form" action="https://formspree.io/f/xjykggvl" method="POST"
 						@submit.prevent="handleSubmit">
 						<div class="form-row">
 							<div class="form-field">
@@ -94,7 +94,6 @@ function close() {
 	isOpen.value = false
 }
 
-// Update the form's `action` attribute above with your real Formspree endpoint.
 async function handleSubmit(event) {
 	submitError.value = false
 	try {
