@@ -30,6 +30,7 @@
 
 			<div class="footer-bottom">
 				<p class="footer-copy">&copy; {{ year }} Owens Flooring Co. All rights reserved.</p>
+				<a href="/privacy-policy.html" class="footer-legal-link">Privacy Policy</a>
 			</div>
 		</div>
 	</footer>
@@ -176,6 +177,19 @@ const year = new Date().getFullYear()
 	font-size: 1rem;
 	letter-spacing: 0.08em;
 	color: var(--slate);
+}
+
+.footer-legal-link {
+	font-family: var(--font-display);
+	font-size: 1rem;
+	letter-spacing: 0.05em;
+	color: var(--slate);
+	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+.footer-legal-link:hover {
+	color: var(--sky-50);
 }
 
 @media (max-width: 1024px) {
