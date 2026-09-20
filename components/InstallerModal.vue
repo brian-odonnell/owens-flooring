@@ -14,46 +14,53 @@
 							Tell us a bit about your experience and we'll reach out when we have work that fits.
 						</p>
 
-						<form class="installer-form" action="https://formspree.io/f/xjykggvl" method="POST"
+						<form class="installer-form" action="https://formspree.io/f/xjykggvl" method="POST" novalidate
 							@submit.prevent="handleSubmit">
 							<div class="form-row">
 								<div class="form-field">
 									<label for="installer-name">Full Name *</label>
 									<input id="installer-name" v-model="form.name" name="name" type="text"
-										placeholder="Jane Smith" required />
+										placeholder="Jane Smith" required :class="{ invalid: errors.name }" />
+									<p v-if="errors.name" class="field-error">{{ errors.name }}</p>
 								</div>
 								<div class="form-field">
 									<label for="installer-phone">Phone *</label>
 									<input id="installer-phone" :value="form.phone" @input="onPhoneInput" name="phone" type="tel"
-										placeholder="(440) 000-0000" maxlength="14" required />
+										placeholder="(440) 000-0000" maxlength="14" required :class="{ invalid: errors.phone }" />
+									<p v-if="errors.phone" class="field-error">{{ errors.phone }}</p>
 								</div>
 							</div>
 
 							<div class="form-field">
 								<label for="installer-email">Email *</label>
 								<input id="installer-email" v-model="form.email" name="email" type="email"
-									placeholder="jane@example.com" required />
+									placeholder="jane@example.com" required :class="{ invalid: errors.email }" />
+								<p v-if="errors.email" class="field-error">{{ errors.email }}</p>
 							</div>
 
 							<div class="form-field">
 								<label for="installer-experience">Experience Level *</label>
-								<select id="installer-experience" v-model="form.experience" name="experience">
+								<select id="installer-experience" v-model="form.experience" name="experience" required
+									:class="{ invalid: errors.experience }">
 									<option value="">Select your experience level…</option>
 									<option>Apprentice</option>
 									<option>Journeyman</option>
 								</select>
+								<p v-if="errors.experience" class="field-error">{{ errors.experience }}</p>
 							</div>
 
 							<div class="form-field">
 								<label for="installer-years">Years of Experience *</label>
 								<input id="installer-years" v-model="form.years" name="years"
-									type="text" placeholder="e.g. 5 years" required />
+									type="text" placeholder="e.g. 5 years" required :class="{ invalid: errors.years }" />
+								<p v-if="errors.years" class="field-error">{{ errors.years }}</p>
 							</div>
 
 							<div class="form-field">
 								<label for="installer-types">Flooring Installed *</label>
 								<textarea id="installer-types" v-model="form.types" name="types" rows="4"
-									placeholder="Carpet, tile, VCT, etc."></textarea>
+									placeholder="Carpet, tile, VCT, etc." required :class="{ invalid: errors.types }"></textarea>
+								<p v-if="errors.types" class="field-error">{{ errors.types }}</p>
 							</div>
 
 							<div class="form-field">
@@ -63,7 +70,8 @@
 							</div>
 
 							<p v-if="submitError" class="form-error">
-								Something went wrong submitting your info. Please try again or call us directly.
+								Well, this is embarrassing — our form just tripped over its own shoelaces. Shoot us a message at
+								<a :href="`mailto:${CONTACT_EMAIL}`">{{ CONTACT_EMAIL }}</a> instead.
 							</p>
 
 							<button type="submit" class="btn-primary form-submit" :disabled="submitted">
@@ -95,8 +103,33 @@ const submitted = ref(false)
 const submitError = ref(false)
 const modalRef = ref(null)
 
+const errors = reactive({
+	name: '',
+	phone: '',
+	email: '',
+	experience: '',
+	years: '',
+	types: ''
+})
+
 function onPhoneInput(event) {
 	form.phone = formatPhoneNumber(event.target.value)
+}
+
+function validate() {
+	errors.name = form.name.trim() ? '' : 'Please enter your name.'
+	const phoneDigits = form.phone.replace(/\D/g, '')
+	errors.phone = !phoneDigits
+		? 'Please enter your phone number.'
+		: phoneDigits.length === 10 ? '' : 'Please enter a complete phone number.'
+	errors.email = !form.email.trim()
+		? 'Please enter your email.'
+		: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? '' : 'Please enter a valid email address.'
+	errors.experience = form.experience ? '' : 'Please select your experience level.'
+	errors.years = form.years.trim() ? '' : 'Please enter your years of experience.'
+	errors.types = form.types.trim() ? '' : 'Please tell us what flooring you\'ve installed.'
+
+	return !Object.values(errors).some(Boolean)
 }
 
 function close() {
@@ -129,6 +162,7 @@ function handleTab(e) {
 
 async function handleSubmit(event) {
 	submitError.value = false
+	if (!validate()) return
 	try {
 		const res = await fetch(event.target.action, {
 			method: 'POST',
@@ -317,9 +351,28 @@ onUnmounted(() => {
 	min-height: 90px;
 }
 
+.form-field input.invalid,
+.form-field select.invalid,
+.form-field textarea.invalid {
+	border-color: var(--error);
+}
+
+.field-error {
+	font-family: var(--font-display);
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--error);
+}
+
 .form-error {
-	color: #ff8a8a;
+	color: var(--error);
 	font-size: 1rem;
+}
+
+.form-error a {
+	text-decoration: underline;
 }
 
 .form-submit {

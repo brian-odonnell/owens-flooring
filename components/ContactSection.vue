@@ -24,7 +24,7 @@
 						</div>
 					</a>
 
-					<a href="mailto:contact@owensflooring.net" class="contact-detail-item">
+					<a :href="`mailto:${CONTACT_EMAIL}`" class="contact-detail-item">
 						<div class="detail-icon">
 							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 								stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -34,7 +34,7 @@
 						</div>
 						<div>
 							<p class="detail-label">Email</p>
-							<p class="detail-value">contact@owensflooring.net</p>
+							<p class="detail-value">{{ CONTACT_EMAIL }}</p>
 						</div>
 					</a>
 
@@ -70,14 +70,15 @@
 
 			<!-- Right form panel -->
 			<div class="contact-form-wrap">
-				<form class="contact-form" action="https://formspree.io/f/meaoeeqa" method="POST"
+				<form class="contact-form" action="https://formspree.io/f/meaoeeqa" method="POST" novalidate
 					@submit.prevent="handleSubmit">
 					<fieldset class="contact-form-fields" :disabled="submitted">
 						<div class="form-row">
 							<div class="form-field">
 								<label for="name">Your Name *</label>
 								<input id="name" v-model="form.name" name="name" type="text" placeholder="Jane Smith"
-									required />
+									required :class="{ invalid: errors.name }" />
+								<p v-if="errors.name" class="field-error">{{ errors.name }}</p>
 							</div>
 							<div class="form-field">
 								<label for="company">Company</label>
@@ -90,18 +91,21 @@
 							<div class="form-field">
 								<label for="email">Email *</label>
 								<input id="email" v-model="form.email" name="email" type="email" placeholder="jane@acme.com"
-									required />
+									required :class="{ invalid: errors.email }" />
+								<p v-if="errors.email" class="field-error">{{ errors.email }}</p>
 							</div>
 							<div class="form-field">
 								<label for="phone">Phone *</label>
 								<input id="phone" :value="form.phone" @input="onPhoneInput" name="phone" type="tel"
-									placeholder="(440) 000-0000" maxlength="14" required />
+									placeholder="(440) 000-0000" maxlength="14" required :class="{ invalid: errors.phone }" />
+								<p v-if="errors.phone" class="field-error">{{ errors.phone }}</p>
 							</div>
 						</div>
 
 						<div class="form-field">
 							<label for="service">Service Needed *</label>
-							<select id="service" v-model="form.service" name="service" required>
+							<select id="service" v-model="form.service" name="service" required
+								:class="{ invalid: errors.service }">
 								<option value="">Select a service…</option>
 								<option>Hardwood / Engineered Wood</option>
 								<option>Luxury Vinyl Plank (LVP)</option>
@@ -111,26 +115,32 @@
 								<option>Surface Prep / Repair</option>
 								<option>Not sure yet</option>
 							</select>
+							<p v-if="errors.service" class="field-error">{{ errors.service }}</p>
 						</div>
 
 						<div class="form-field">
 							<label for="sqft">Approximate Square Footage *</label>
-							<input id="sqft" v-model="form.sqft" name="sqft" type="text" placeholder="e.g. 3,000 sq ft" required />
+							<input id="sqft" v-model="form.sqft" name="sqft" type="text" placeholder="e.g. 3,000 sq ft" required
+								:class="{ invalid: errors.sqft }" />
+							<p v-if="errors.sqft" class="field-error">{{ errors.sqft }}</p>
 						</div>
 
 						<div class="form-field">
 							<label for="message">Project Details *</label>
 							<textarea id="message" v-model="form.message" name="message" rows="4"
-								placeholder="Describe your space, timeline, and any other details…" required></textarea>
+								placeholder="Describe your space, timeline, and any other details…" required
+								:class="{ invalid: errors.message }"></textarea>
+							<p v-if="errors.message" class="field-error">{{ errors.message }}</p>
 						</div>
 					</fieldset>
 
 					<p v-if="submitError" class="form-error">
-						Something went wrong sending your message. Please try again or call us directly.
+						Well, this is embarrassing — our form just tripped over its own shoelaces. Shoot us a message at
+						<a :href="`mailto:${CONTACT_EMAIL}`">{{ CONTACT_EMAIL }}</a> instead.
 					</p>
 
 					<button type="submit" class="btn-primary form-submit" :disabled="submitted">
-						<span v-if="!submitted">Send My Project Details</span>
+						<span v-if="!submitted">Send Your Project Details</span>
 						<span v-else>✓ Project Details Sent!</span>
 					</button>
 				</form>
@@ -153,12 +163,38 @@ const form = reactive({
 const submitted = ref(false)
 const submitError = ref(false)
 
+const errors = reactive({
+	name: '',
+	email: '',
+	phone: '',
+	service: '',
+	sqft: '',
+	message: ''
+})
+
 function onPhoneInput(event) {
 	form.phone = formatPhoneNumber(event.target.value)
 }
 
+function validate() {
+	errors.name = form.name.trim() ? '' : 'Please enter your name.'
+	errors.email = !form.email.trim()
+		? 'Please enter your email.'
+		: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? '' : 'Please enter a valid email address.'
+	const phoneDigits = form.phone.replace(/\D/g, '')
+	errors.phone = !phoneDigits
+		? 'Please enter your phone number.'
+		: phoneDigits.length === 10 ? '' : 'Please enter a complete phone number.'
+	errors.service = form.service ? '' : 'Please select a service.'
+	errors.sqft = form.sqft.trim() ? '' : 'Please enter your square footage.'
+	errors.message = form.message.trim() ? '' : 'Please describe your project.'
+
+	return !Object.values(errors).some(Boolean)
+}
+
 async function handleSubmit(event) {
 	submitError.value = false
+	if (!validate()) return
 	try {
 		const res = await fetch(event.target.action, {
 			method: 'POST',
@@ -361,9 +397,31 @@ a.contact-detail-item:hover .detail-value {
 	min-height: 100px;
 }
 
+.form-field input.invalid,
+.form-field select.invalid,
+.form-field textarea.invalid {
+	border-color: var(--error);
+}
+
+.field-error {
+	font-family: var(--font-display);
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--error);
+}
+
 .form-error {
-	color: #ff8a8a;
+	font-family: var(--font-display);
 	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	color: var(--error);
+}
+
+.form-error a {
+	text-decoration: underline;
 }
 
 .form-submit {

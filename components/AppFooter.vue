@@ -20,7 +20,7 @@
 							<a href="tel:+14402691112">(440) 269-1112</a>
 						</li>
 						<li>
-							<a href="mailto:contact@owensflooring.net">contact@owensflooring.net</a>
+							<a :href="`mailto:${CONTACT_EMAIL}`">{{ CONTACT_EMAIL }}</a>
 						</li>
 						<li>38270 Airport Pkwy<br>Willoughby, OH 44094</li>
 						<li>Mon&ndash;Fri: 9:00AM&ndash;5:00PM</li>
