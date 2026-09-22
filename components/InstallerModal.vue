@@ -34,7 +34,7 @@
 							<div class="form-field">
 								<label for="installer-email">Email *</label>
 								<input id="installer-email" v-model="form.email" name="email" type="email"
-									placeholder="jane@example.com" required :class="{ invalid: errors.email }" />
+									placeholder="name@company.com" required :class="{ invalid: errors.email }" />
 								<p v-if="errors.email" class="field-error">{{ errors.email }}</p>
 							</div>
 

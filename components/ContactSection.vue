@@ -90,7 +90,7 @@
 						<div class="form-row">
 							<div class="form-field">
 								<label for="email">Email *</label>
-								<input id="email" v-model="form.email" name="email" type="email" placeholder="jane@acme.com"
+								<input id="email" v-model="form.email" name="email" type="email" placeholder="name@company.com"
 									required :class="{ invalid: errors.email }" />
 								<p v-if="errors.email" class="field-error">{{ errors.email }}</p>
 							</div>
