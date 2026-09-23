@@ -72,6 +72,8 @@
 			<div class="contact-form-wrap">
 				<form class="contact-form" action="https://formspree.io/f/meaoeeqa" method="POST" novalidate
 					@submit.prevent="handleSubmit">
+					<!-- Honeypot: hidden from people, bots that fill it get dropped by Formspree -->
+					<input v-model="form._gotcha" type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 					<fieldset class="contact-form-fields" :disabled="submitted">
 						<div class="form-row">
 							<div class="form-field">
@@ -134,6 +136,8 @@
 						</div>
 					</fieldset>
 
+					<p v-if="errors.recaptcha" class="form-error">{{ errors.recaptcha }}</p>
+
 					<p v-if="submitError" class="form-error">
 						Well, this is embarrassing — our form just tripped over its own shoelaces. Shoot us a message at
 						<a :href="`mailto:${CONTACT_EMAIL}`">{{ CONTACT_EMAIL }}</a> instead.
@@ -143,6 +147,12 @@
 						<span v-if="!submitted">Send Your Project Details</span>
 						<span v-else>✓ Project Details Sent!</span>
 					</button>
+
+					<p class="recaptcha-note">
+						This site is protected by reCAPTCHA and the Google
+						<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
+						<a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
+					</p>
 				</form>
 			</div>
 		</div>
@@ -157,7 +167,8 @@ const form = reactive({
 	phone: '',
 	service: '',
 	sqft: '',
-	message: ''
+	message: '',
+	_gotcha: ''
 })
 
 const submitted = ref(false)
@@ -169,8 +180,11 @@ const errors = reactive({
 	phone: '',
 	service: '',
 	sqft: '',
-	message: ''
+	message: '',
+	recaptcha: ''
 })
+
+const recaptcha = useRecaptcha()
 
 function onPhoneInput(event) {
 	form.phone = formatPhoneNumber(event.target.value)
@@ -194,12 +208,22 @@ function validate() {
 
 async function handleSubmit(event) {
 	submitError.value = false
+	errors.recaptcha = ''
 	if (!validate()) return
+
+	let token = ''
+	try {
+		token = await recaptcha.getToken()
+	} catch {
+		errors.recaptcha = 'Spam check failed to load. Please refresh the page and try again.'
+		return
+	}
+
 	try {
 		const res = await fetch(event.target.action, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-			body: JSON.stringify(form)
+			body: JSON.stringify({ ...form, 'g-recaptcha-response': token })
 		})
 		submitted.value = res.ok
 		submitError.value = !res.ok
@@ -210,6 +234,15 @@ async function handleSubmit(event) {
 </script>
 
 <style scoped>
+.hp-field {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+
 .contact {
 	padding: 100px 32px;
 	background: var(--sky-50);
@@ -430,6 +463,18 @@ a.contact-detail-item:hover .detail-value {
 	font-size: 1rem;
 	padding: 16px;
 	margin-top: 4px;
+}
+
+.recaptcha-note {
+	text-align: right;
+	font-size: 0.7rem;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.35);
+}
+
+.recaptcha-note a {
+	color: inherit;
+	text-decoration: underline;
 }
 
 .form-submit:disabled {

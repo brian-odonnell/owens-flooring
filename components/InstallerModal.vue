@@ -16,58 +16,64 @@
 
 						<form class="installer-form" action="https://formspree.io/f/xjykggvl" method="POST" novalidate
 							@submit.prevent="handleSubmit">
-							<div class="form-row">
-								<div class="form-field">
-									<label for="installer-name">Full Name *</label>
-									<input id="installer-name" v-model="form.name" name="name" type="text"
-										placeholder="Jane Smith" required :class="{ invalid: errors.name }" />
-									<p v-if="errors.name" class="field-error">{{ errors.name }}</p>
+							<!-- Honeypot: hidden from people, bots that fill it get dropped by Formspree -->
+							<input v-model="form._gotcha" type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+							<fieldset class="installer-form-fields" :disabled="submitted">
+								<div class="form-row">
+									<div class="form-field">
+										<label for="installer-name">Full Name *</label>
+										<input id="installer-name" v-model="form.name" name="name" type="text"
+											placeholder="Jane Smith" required :class="{ invalid: errors.name }" />
+										<p v-if="errors.name" class="field-error">{{ errors.name }}</p>
+									</div>
+									<div class="form-field">
+										<label for="installer-phone">Phone *</label>
+										<input id="installer-phone" :value="form.phone" @input="onPhoneInput" name="phone" type="tel"
+											placeholder="(440) 000-0000" maxlength="14" required :class="{ invalid: errors.phone }" />
+										<p v-if="errors.phone" class="field-error">{{ errors.phone }}</p>
+									</div>
 								</div>
+
 								<div class="form-field">
-									<label for="installer-phone">Phone *</label>
-									<input id="installer-phone" :value="form.phone" @input="onPhoneInput" name="phone" type="tel"
-										placeholder="(440) 000-0000" maxlength="14" required :class="{ invalid: errors.phone }" />
-									<p v-if="errors.phone" class="field-error">{{ errors.phone }}</p>
+									<label for="installer-email">Email *</label>
+									<input id="installer-email" v-model="form.email" name="email" type="email"
+										placeholder="name@company.com" required :class="{ invalid: errors.email }" />
+									<p v-if="errors.email" class="field-error">{{ errors.email }}</p>
 								</div>
-							</div>
 
-							<div class="form-field">
-								<label for="installer-email">Email *</label>
-								<input id="installer-email" v-model="form.email" name="email" type="email"
-									placeholder="name@company.com" required :class="{ invalid: errors.email }" />
-								<p v-if="errors.email" class="field-error">{{ errors.email }}</p>
-							</div>
+								<div class="form-field">
+									<label for="installer-experience">Experience Level *</label>
+									<select id="installer-experience" v-model="form.experience" name="experience" required
+										:class="{ invalid: errors.experience }">
+										<option value="">Select your experience level…</option>
+										<option>Apprentice</option>
+										<option>Journeyman</option>
+									</select>
+									<p v-if="errors.experience" class="field-error">{{ errors.experience }}</p>
+								</div>
 
-							<div class="form-field">
-								<label for="installer-experience">Experience Level *</label>
-								<select id="installer-experience" v-model="form.experience" name="experience" required
-									:class="{ invalid: errors.experience }">
-									<option value="">Select your experience level…</option>
-									<option>Apprentice</option>
-									<option>Journeyman</option>
-								</select>
-								<p v-if="errors.experience" class="field-error">{{ errors.experience }}</p>
-							</div>
+								<div class="form-field">
+									<label for="installer-years">Years of Experience *</label>
+									<input id="installer-years" v-model="form.years" name="years"
+										type="text" placeholder="e.g. 5 years" required :class="{ invalid: errors.years }" />
+									<p v-if="errors.years" class="field-error">{{ errors.years }}</p>
+								</div>
 
-							<div class="form-field">
-								<label for="installer-years">Years of Experience *</label>
-								<input id="installer-years" v-model="form.years" name="years"
-									type="text" placeholder="e.g. 5 years" required :class="{ invalid: errors.years }" />
-								<p v-if="errors.years" class="field-error">{{ errors.years }}</p>
-							</div>
+								<div class="form-field">
+									<label for="installer-types">Flooring Installed *</label>
+									<textarea id="installer-types" v-model="form.types" name="types" rows="4"
+										placeholder="Carpet, tile, VCT, etc." required :class="{ invalid: errors.types }"></textarea>
+									<p v-if="errors.types" class="field-error">{{ errors.types }}</p>
+								</div>
 
-							<div class="form-field">
-								<label for="installer-types">Flooring Installed *</label>
-								<textarea id="installer-types" v-model="form.types" name="types" rows="4"
-									placeholder="Carpet, tile, VCT, etc." required :class="{ invalid: errors.types }"></textarea>
-								<p v-if="errors.types" class="field-error">{{ errors.types }}</p>
-							</div>
+								<div class="form-field">
+									<label for="installer-message">Additional Info</label>
+									<textarea id="installer-message" v-model="form.message" name="message" rows="4"
+										placeholder="Availability, certifications, referrals, etc."></textarea>
+								</div>
+							</fieldset>
 
-							<div class="form-field">
-								<label for="installer-message">Additional Info</label>
-								<textarea id="installer-message" v-model="form.message" name="message" rows="4"
-									placeholder="Availability, certifications, referrals, etc."></textarea>
-							</div>
+							<p v-if="errors.recaptcha" class="form-error">{{ errors.recaptcha }}</p>
 
 							<p v-if="submitError" class="form-error">
 								Well, this is embarrassing — our form just tripped over its own shoelaces. Shoot us a message at
@@ -78,6 +84,12 @@
 								<span v-if="!submitted">Submit Interest</span>
 								<span v-else>✓ Submitted!</span>
 							</button>
+
+							<p class="recaptcha-note">
+								This site is protected by reCAPTCHA and the Google
+								<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
+								<a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of&nbsp;Service</a>&nbsp;apply.
+							</p>
 						</form>
 					</div>
 				</div>
@@ -93,10 +105,11 @@ const form = reactive({
 	name: '',
 	phone: '',
 	email: '',
-	trade: '',
 	experience: '',
-	union: '',
-	message: ''
+	years: '',
+	types: '',
+	message: '',
+	_gotcha: ''
 })
 
 const submitted = ref(false)
@@ -109,8 +122,11 @@ const errors = reactive({
 	email: '',
 	experience: '',
 	years: '',
-	types: ''
+	types: '',
+	recaptcha: ''
 })
+
+const recaptcha = useRecaptcha()
 
 function onPhoneInput(event) {
 	form.phone = formatPhoneNumber(event.target.value)
@@ -162,12 +178,22 @@ function handleTab(e) {
 
 async function handleSubmit(event) {
 	submitError.value = false
+	errors.recaptcha = ''
 	if (!validate()) return
+
+	let token = ''
+	try {
+		token = await recaptcha.getToken()
+	} catch {
+		errors.recaptcha = 'Spam check failed to load. Please refresh the page and try again.'
+		return
+	}
+
 	try {
 		const res = await fetch(event.target.action, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-			body: JSON.stringify(form)
+			body: JSON.stringify({ ...form, 'g-recaptcha-response': token })
 		})
 		submitted.value = res.ok
 		submitError.value = !res.ok
@@ -200,6 +226,15 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.hp-field {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+
 .installer-modal-overlay {
 	position: fixed;
 	inset: 0;
@@ -274,6 +309,20 @@ onUnmounted(() => {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+}
+
+.installer-form-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border: none;
+	margin: 0;
+	padding: 0;
+	min-width: 0;
+}
+
+.installer-form-fields:disabled {
+	opacity: 0.6;
 }
 
 .form-row {
@@ -381,6 +430,18 @@ onUnmounted(() => {
 	font-size: 1rem;
 	padding: 16px;
 	margin-top: 4px;
+}
+
+.recaptcha-note {
+	text-align: right;
+	font-size: 0.7rem;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.35);
+}
+
+.recaptcha-note a {
+	color: inherit;
+	text-decoration: underline;
 }
 
 .form-submit:disabled {
