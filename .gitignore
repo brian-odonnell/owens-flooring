@@ -1,2 +1,5 @@
 TODO.md
 .nuxt/
+node_modules/
+.output/
+dist/
