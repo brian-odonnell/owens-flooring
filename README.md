@@ -55,23 +55,33 @@ To point either form at a different Formspree form, update the `action` attribut
 ## File Structure
 
 ```
-flooring-site/
+owens-flooring/
 ├── app.vue                    # Root layout
-├── nuxt.config.ts             # Nuxt configuration (static preset)
+├── nuxt.config.ts             # Nuxt configuration (static preset, meta/fonts)
 ├── package.json
 ├── assets/
-│   └── css/
-│       └── main.css           # Global styles, CSS variables
+│   ├── css/
+│   │   └── main.css           # Global styles, CSS variables
+│   ├── img/                   # Site photography
+│   └── logos/                 # Logo variants (svg/png/jpg)
 ├── components/
 │   ├── AppNav.vue             # Fixed navigation bar
 │   ├── HeroSection.vue        # Hero with stats
-│   ├── ServicesSection.vue    # 6-up service cards
-│   ├── GallerySection.vue     # Filterable gallery + lightbox
+│   ├── ServicesSection.vue    # Service cards
 │   ├── AboutSection.vue       # Two-column about with image stack
-│   ├── ContactSection.vue     # Contact info + form
-│   └── AppFooter.vue          # Footer with sitemap
+│   ├── InstallersSection.vue  # Installer recruitment section
+│   ├── InstallerModal.vue     # Installer interest form (modal)
+│   ├── ContactSection.vue     # Contact info + estimate request form
+│   ├── AppFooter.vue          # Footer with sitemap
+│   └── LogoSvg.vue            # Inline logo SVG component
+├── composables/
+│   └── useRecaptcha.js        # reCAPTCHA v3 token loader (see Forms)
+├── utils/
+│   ├── constants.js           # CONTACT_EMAIL, RECAPTCHA_SITE_KEY
+│   └── phone.js               # Phone input formatting
 └── public/
-    └── images/                # Add your images here
+    ├── favicon.svg / favicon.png
+    └── privacy-policy.html
 ```
 
 ## FTP Deployment
