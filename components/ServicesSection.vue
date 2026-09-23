@@ -57,12 +57,12 @@ const services = [
 	},
 	{
 		title: 'Specialty Flooring',
-		tags: ['Sports Flooring', 'Static Dissapating Flooring'],
+		tags: ['Sports Flooring', 'Static Dissipating Flooring'],
 		// floor layer cross-section: finish + moisture barrier + subfloor
 		icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="3" rx="0.5"/><path d="M2 12Q5.5 10 9 12Q12.5 14 16 12Q19.5 10 22 12" opacity="0.7"/><rect x="2" y="15" width="20" height="4" rx="0.5" opacity="0.4"/></svg>`
   	},
 	{
-		title: 'Substrate Preperations',
+		title: 'Substrate Preparations',
 		tags: ['Self-Leveling', 'Crack Isolation Membrane'],
 		// subfloor prep: base layer with crack lines above
 		icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="15" width="20" height="5" rx="0.5"/><path d="M2 11h20" opacity="0.5"/><path d="M5 7l1.5-2M10 7l1.5-2M15 7l1.5-2" opacity="0.6"/></svg>`

@@ -197,6 +197,7 @@ async function handleSubmit(event) {
 		})
 		submitted.value = res.ok
 		submitError.value = !res.ok
+		if (res.ok) window.umami?.track('Installer Interest Submitted', { experience: form.experience })
 	} catch {
 		submitError.value = true
 	}

@@ -3,7 +3,6 @@
 		<!-- Background texture overlay -->
 		<div class="hero-bg">
 			<div class="hero-img-placeholder">
-				<!-- Replace with: <img src="/images/hero-flooring.jpg" alt="Commercial flooring installation"> -->
 				<div class="placeholder-pattern"></div>
 			</div>
 			<div class="hero-overlay"></div>
@@ -27,7 +26,7 @@
 
 				<div class="hero-stats">
 					<div class="stat">
-						<span class="stat-num">61+ Years</span>
+						<span class="stat-num">{{ yearsInBusiness }}+ Years</span>
 						<span class="stat-label">Serving Northeast Ohio</span>
 					</div>
 					<div class="stat-divider"></div>
@@ -48,6 +47,17 @@
 		<div class="hero-cut"></div>
 	</section>
 </template>
+
+<script setup>
+const FOUNDED_YEAR = 1965
+
+// Set at build time, then refreshed in the browser so the count stays current without a rebuild
+const yearsInBusiness = ref(new Date().getFullYear() - FOUNDED_YEAR)
+
+onMounted(() => {
+	yearsInBusiness.value = new Date().getFullYear() - FOUNDED_YEAR
+})
+</script>
 
 <style scoped>
 .hero {

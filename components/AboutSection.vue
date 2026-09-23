@@ -4,7 +4,7 @@
 			<!-- Image column -->
 			<div class="about-media">
 				<div class="about-img">
-					<img src="/assets/img/OFC-Building.jpg" alt="Owens Flooring Co. office"/>
+					<img src="/assets/img/OFC-Building.jpg" alt="Owens Flooring Co. office" width="1200" height="900" loading="lazy" decoding="async"/>
 				</div>
 				<div class="about-badge">
 					<span class="badge-num">Est.</span>
@@ -17,7 +17,7 @@
 				<p class="section-label">About Us</p>
 				<h2 class="section-title about-title">Family Owned.<br>Union Installed.<br>Since 1965.</h2>
 				<p class="about-body">
-					We have been a trusted name in Northeast Ohio for over five decades. We're family owned and operated — and that hasn't changed since the day we opened our doors in Eastlake.
+					We have been a trusted name in Northeast Ohio for over six decades. We're family owned and operated — and that hasn't changed since the day we opened our doors in Eastlake.
 				</p>
 				<p class="about-body">
 					We staff our crews directly through the union, so every installer on your job is a trained, dues-paying professional.

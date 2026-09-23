@@ -109,12 +109,12 @@
 							<select id="service" v-model="form.service" name="service" required
 								:class="{ invalid: errors.service }">
 								<option value="">Select a service…</option>
-								<option>Hardwood / Engineered Wood</option>
-								<option>Luxury Vinyl Plank (LVP)</option>
-								<option>Ceramic / Porcelain Tile</option>
-								<option>Epoxy / Resin Coating</option>
-								<option>Commercial Carpet</option>
-								<option>Surface Prep / Repair</option>
+								<option>Carpet</option>
+								<option>Resilient</option>
+								<option>Ceramic</option>
+								<option>Wood</option>
+								<option>Specialty Flooring</option>
+								<option>Substrate Preparations</option>
 								<option>Not sure yet</option>
 							</select>
 							<p v-if="errors.service" class="field-error">{{ errors.service }}</p>
@@ -227,6 +227,7 @@ async function handleSubmit(event) {
 		})
 		submitted.value = res.ok
 		submitError.value = !res.ok
+		if (res.ok) window.umami?.track('Estimate Request Submitted', { service: form.service })
 	} catch {
 		submitError.value = true
 	}
